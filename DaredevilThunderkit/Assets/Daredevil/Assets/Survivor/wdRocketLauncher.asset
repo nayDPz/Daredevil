@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1168ff7fce5e5324abf62a716a1b627b, type: 3}
+  m_Name: wdRocketLauncher
+  m_EditorClassIdentifier: 
+  primarySkill: {fileID: 11400000, guid: 9ac6bf67f207ac442a470f47a7f8c831, type: 2}
+  secondarySkill: {fileID: 11400000, guid: ac94fe4f258872b4988e8e84b8eb454b, type: 2}
+  utilitySkill: {fileID: 0}
+  iconTexture: {fileID: 0}
+  animationLayer: Body, BigGun
+  equipSoundString: 
+  unequipSoundString: 
+  transformsToEnable:
+  - RocketLauncher
+  thrownWeaponProjectilePrefab: {fileID: 1824167051382056305, guid: df1f8a297396ff14cab077aa1bbb225b,
+    type: 3}

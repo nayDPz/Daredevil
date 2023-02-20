@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1168ff7fce5e5324abf62a716a1b627b, type: 3}
+  m_Name: wdNailgun
+  m_EditorClassIdentifier: 
+  primarySkill: {fileID: 11400000, guid: 35446732e6c1b49498c15427b621f739, type: 2}
+  secondarySkill: {fileID: 11400000, guid: dd11f162ec0ae43478443578abe307ac, type: 2}
+  utilitySkill: {fileID: 0}
+  iconTexture: {fileID: 0}
+  animationLayer: Body, BigGun
+  equipSoundString: Play_V1_nailgun_start
+  unequipSoundString: Play_V1_nailgun_end
+  transformsToEnable:
+  - Nailgun
+  thrownWeaponProjectilePrefab: {fileID: 1824167051382056305, guid: 27e83ac5b235b9f4787cb1f68e88d358,
+    type: 3}

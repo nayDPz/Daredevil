@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2e23a5a9129164ab4dd1f3ee979a50, type: 3}
+  m_Name: sdRocketLauncherSecondary
+  m_EditorClassIdentifier: 
+  skillName: FreezeRockets
+  skillNameToken: ORB_ROCKETLAUNCHER_SECONDARY_NAME
+  skillDescriptionToken: ORB_ROCKETLAUNCHER_SECONDARY_DESCRIPTION
+  keywordTokens: []
+  icon: {fileID: 0}
+  activationStateMachineName: WeaponExtra
+  activationState:
+    _typeName: 
+  interruptPriority: 1
+  baseRechargeInterval: 0
+  baseMaxStock: 1
+  rechargeStock: 0
+  requiredStock: 0
+  stockToConsume: 0
+  resetCooldownTimerOnUse: 0
+  fullRestockOnAssign: 1
+  dontAllowPastMaxStocks: 0
+  beginSkillCooldownOnSkillEnd: 0
+  cancelSprintingOnActivation: 0
+  forceSprintDuringState: 0
+  canceledFromSprinting: 0
+  isCombatSkill: 0
+  mustKeyPress: 1
+  sequenceList:
+  - _typeName: Daredevil.States.FreezeProjectiles, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.ThawProjectiles, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null

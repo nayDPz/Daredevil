@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1881990681, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: Daredevil
+  m_EditorClassIdentifier: 
+  bodyPrefab: {fileID: 8383480517167273634, guid: 69c5b91720531414f9c1c800d473e037,
+    type: 3}
+  displayPrefab: {fileID: 1155239256553435336, guid: ad6b25a52d5808f4683509b3cb344a0c,
+    type: 3}
+  unlockableName: 
+  unlockableDef: {fileID: 0}
+  displayNameToken: ORB_DAREDEVIL_BODY_NAME
+  descriptionToken: ORB_DAREDEVIL_DESCRIPTION
+  outroFlavorToken: ORB_DAREDEVIL_OUTRO_FLAVOR
+  mainEndingEscapeFailureFlavorToken: ORB_DAREDEVIL_MAIN_ENDING_ESCAPE_FAILURE_FLAVOR
+  primaryColor: {r: 1, g: 0, b: 0, a: 0}
+  desiredSortPosition: 8
+  hidden: 0

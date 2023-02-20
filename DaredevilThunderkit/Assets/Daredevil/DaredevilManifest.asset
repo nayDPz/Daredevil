@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4485918878728077029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d1008b78cb6e846889b7778282fbef, type: 3}
+  m_Name: AssetBundleDefinitions
+  m_EditorClassIdentifier: 
+  StagingPaths: []
+  assetBundles:
+  - assetBundleName: DaredevilAssets
+    assets:
+    - {fileID: 102900000, guid: da0ba769b259d064493e15158dff6c4b, type: 3}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e563561e08b6a3642a487177f5cfbb37, type: 3}
+  m_Name: DaredevilManifest
+  m_EditorClassIdentifier: 
+  Data:
+  - {fileID: 4759623003112569116}
+  - {fileID: -4485918878728077029}
+  - {fileID: 3799162700315841614}
+  identity: {fileID: 4759623003112569116}
+  QuickAccess: 0
+--- !u!114 &3799162700315841614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7e13dda513544419a89926bd12ad8a, type: 3}
+  m_Name: AssemblyDefinitions
+  m_EditorClassIdentifier: 
+  StagingPaths: []
+  definitions:
+  - {fileID: 5897886265953266890, guid: ed150248801f1f84a8407a894a1ba7f8, type: 3}
+--- !u!114 &4759623003112569116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22bb7fd1d3b56a48bc52f8e407901d6, type: 3}
+  m_Name: ManifestIdentity
+  m_EditorClassIdentifier: 
+  StagingPaths: []
+  Author: nayDPz
+  Name: Daredevil
+  Description: Daredevil, ported to Thunderkit
+  Version: 1.0.0
+  Dependencies:
+  - {fileID: 11400000, guid: 2d4d09ec817c24698d35dc9bf0704fdc, type: 2}
+  - {fileID: 11400000, guid: 1f1d261aeee91427ddd08b6378ec4e5a, type: 2}
+  - {fileID: 11400000, guid: 184f0fdf3edcd6bad171410f4e0fd947, type: 2}
+  - {fileID: 11400000, guid: cf53c440617523c88133e24838fdcb20, type: 2}
+  - {fileID: 11400000, guid: 014c4e162aebc6b9c7c87be504a1bd10, type: 2}
+  - {fileID: 11400000, guid: 6341db55729149fc031af436016bb5bd, type: 2}
+  - {fileID: 11400000, guid: a644a53693d44639c70550096ce74b93, type: 2}
+  - {fileID: 11400000, guid: 453e372cd7b60ea848696c78d5719397, type: 2}

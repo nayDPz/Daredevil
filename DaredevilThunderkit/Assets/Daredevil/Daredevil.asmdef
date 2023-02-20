@@ -1,0 +1,41 @@
+{
+    "name": "Daredevil",
+    "references": [
+        "Unity.Postprocessing.Runtime",
+        "com.unity.multiplayer-hlapi.Runtime",
+        "Unity.TextMeshPro",
+        "UnityEngine.UI"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "BepInEx.dll",
+        "MonoMod.Utils.dll",
+        "Mono.Cecil.dll",
+        "MMHOOK_RoR2.dll",
+        "HGCSharpUtils.dll",
+        "HGUnityUtils.dll",
+        "Zio.dll",
+        "RoR2.dll",
+        "RoR2BepInExPack.dll",
+        "Unity.Addressables.dll",
+        "Unity.ResourceManager.dll",
+        "Unity.TextMeshPro.dll",
+        "UnityEngine.UI.dll",
+        "R2API.ContentManagement.dll",
+        "R2API.Core.dll",
+        "R2API.DamageType.dll",
+        "R2API.Language.dll",
+        "R2API.Orb.dll",
+        "R2API.Prefab.dll",
+        "R2API.Unlockable.dll",
+        "Wwise.dll",
+        "KinematicCharacterController.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

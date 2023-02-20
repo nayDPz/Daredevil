@@ -1,0 +1,209 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: maskGesture
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: HolsteredPistol
+    m_Weight: 0
+  - m_Path: HolsteredRevolver
+    m_Weight: 0
+  - m_Path: HolsteredSword
+    m_Weight: 0
+  - m_Path: mdlDaredevil
+    m_Weight: 0
+  - m_Path: mdlDaredevil/HeadTRG
+    m_Weight: 0
+  - m_Path: mdlDaredevil/PROPERTIES
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/BackWheel
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/Chassis
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/Chassis/Back
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/Chassis/Back/Extras
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/FrontControl
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/FrontControl/Front
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/FrontControl/FrontWheel
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Elbow.L
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Elbow.R
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/IKHand.L
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/IKHand.R
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/IKLeg.L
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/IKLeg.R
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Knee.L
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Knee.R
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Hips
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Hips/Leg1.L
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Hips/Leg1.L/Leg2.L
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Hips/Leg1.L/Leg2.L/Foot.L
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Hips/Leg1.L/Leg2.L/Foot.L/Toe.L
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Hips/Leg1.R
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Hips/Leg1.R/Leg2.R
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Hips/Leg1.R/Leg2.R/Foot.R
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Hips/Leg1.R/Leg2.R/Foot.R/Toe.R
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Hips/PistolHolstered
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Hips/RevolverHolstered
+    m_Weight: 0
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Head
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Jetpack
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Neck
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Index1.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Index1.L/Index2.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Index1.L/Index2.L/Index3.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Middle1.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Middle1.L/Middle2.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Middle1.L/Middle2.L/Middle3.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Pinky1.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Pinky1.L/Pinky2.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Pinky1.L/Pinky2.L/Pinky3.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Pistol
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Pistol/PistolSmear
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Ring1.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Ring1.L/Ring2.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Ring1.L/Ring2.L/Ring3.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Thumb1.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Thumb1.L/Thumb2.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.L/Arm1.L/Arm2.L/Hand.L/Thumb1.L/Thumb2.L/Thumb3.L
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/BigGun
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Index1.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Index1.R/Index2.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Index1.R/Index2.R/Index3.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Middle1.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Middle1.R/Middle2.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Middle1.R/Middle2.R/Middle3.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Pinky1.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Pinky1.R/Pinky2.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Pinky1.R/Pinky2.R/Pinky3.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Revolver
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Revolver/Cylinder
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Revolver/RevolverSmear
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Ring1.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Ring1.R/Ring2.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Ring1.R/Ring2.R/Ring3.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Sword
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Sword/SwordBlade
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Sword/SwordSmear
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Sword/SwordSmear2
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Thumb1.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Thumb1.R/Thumb2.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/Shoulder.R/Arm1.R/Arm2.R/Hand.R/Thumb1.R/Thumb2.R/Thumb3.R
+    m_Weight: 1
+  - m_Path: mdlDaredevil/ROOT_BIKE/ROOT/Spine01/Spine02/Spine03/SwordHolstered
+    m_Weight: 1
+  - m_Path: meshDaredevilBody
+    m_Weight: 0
+  - m_Path: meshDaredevilPistol
+    m_Weight: 0
+  - m_Path: meshDaredevilRevolver
+    m_Weight: 0
+  - m_Path: meshDaredevilSword
+    m_Weight: 0
+  - m_Path: meshNailgun
+    m_Weight: 0
+  - m_Path: meshRailgun
+    m_Weight: 0
+  - m_Path: meshRocketLauncher
+    m_Weight: 0
+  - m_Path: meshShotgun
+    m_Weight: 0
+  - m_Path: meshSpecialRevolver
+    m_Weight: 0

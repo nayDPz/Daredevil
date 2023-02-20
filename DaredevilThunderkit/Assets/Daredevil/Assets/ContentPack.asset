@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 870831823, guid: 6640684985c93709256019488ea570c0, type: 3}
+  m_Name: ContentPack
+  m_EditorClassIdentifier: 
+  bodyPrefabs:
+  - {fileID: 8383480517167273634, guid: 69c5b91720531414f9c1c800d473e037, type: 3}
+  masterPrefabs: []
+  projectilePrefabs:
+  - {fileID: 1193141527753475696, guid: 23e5161b311c3c94ab415cd30fbcfa7f, type: 3}
+  - {fileID: 7777211188073527283, guid: 238ad19f5b427944fbbcaa4e092bf2cd, type: 3}
+  - {fileID: 1824167051382056305, guid: de05bf990d50c614a9af1620b34c398d, type: 3}
+  - {fileID: 1824167051382056305, guid: df1f8a297396ff14cab077aa1bbb225b, type: 3}
+  - {fileID: 1824167051382056305, guid: e7c86a8ac83d76f43adc4df9eeade7ef, type: 3}
+  - {fileID: 1824167051382056305, guid: 27e83ac5b235b9f4787cb1f68e88d358, type: 3}
+  gameModePrefabs: []
+  effectPrefabs:
+  - {fileID: 2102239401752920829, guid: e46653cc1f39d8944be20e06bff8f795, type: 3}
+  - {fileID: 1273847131483486, guid: be86b340e8d594841b9b8100ce1fc0a4, type: 3}
+  - {fileID: 1273847131483486, guid: fb3eb6f4890bf1445bf572da5b4c3134, type: 3}
+  networkedObjectPrefabs: []
+  skillDefs:
+  - {fileID: 11400000, guid: 9043c6f2e8ccfcc4f8de6281d6426f4f, type: 2}
+  - {fileID: 11400000, guid: 9bcd1106063a76e43bbf852cb3cd34a4, type: 2}
+  - {fileID: 11400000, guid: f0e03307e54073c4b83bf6d86e15bc09, type: 2}
+  - {fileID: 11400000, guid: a696e60d009631f4284fa43c0f893c1f, type: 2}
+  - {fileID: 11400000, guid: 2af574b681f31234e83478bd85cb45b6, type: 2}
+  - {fileID: 11400000, guid: 3ee357bb03f2d9f48b7501df78c696fe, type: 2}
+  - {fileID: 11400000, guid: d297c0b08682a7f4f89a0345f90bb59f, type: 2}
+  - {fileID: 11400000, guid: c7b2a3ba5912b374b95a996cf90a096d, type: 2}
+  - {fileID: 11400000, guid: 35446732e6c1b49498c15427b621f739, type: 2}
+  - {fileID: 11400000, guid: dd11f162ec0ae43478443578abe307ac, type: 2}
+  - {fileID: 11400000, guid: 9be7f7e1436b91a41a7557cc50a330c2, type: 2}
+  - {fileID: 11400000, guid: c8287088b8e205d4896282f79f54d73b, type: 2}
+  - {fileID: 11400000, guid: 9ac6bf67f207ac442a470f47a7f8c831, type: 2}
+  - {fileID: 11400000, guid: ac94fe4f258872b4988e8e84b8eb454b, type: 2}
+  - {fileID: 11400000, guid: 7064f80047f4a3e44a1fe9b5ebbd9bb6, type: 2}
+  - {fileID: 11400000, guid: 706be4811936d3e4f8cc2d5a8cbc382e, type: 2}
+  skillFamilies:
+  - {fileID: 11400000, guid: 092429621e19e894b923b1c536f59ccf, type: 2}
+  - {fileID: 11400000, guid: 6701d35b599158c40a7c3a8b58cb816a, type: 2}
+  - {fileID: 11400000, guid: fb78492700af65d47b258d59423ed39a, type: 2}
+  - {fileID: 11400000, guid: 0256ea4236846b546958b452bb043c70, type: 2}
+  - {fileID: 11400000, guid: 824b730c9c536b64999096634ed3a7fa, type: 2}
+  sceneDefs: []
+  itemDefs: []
+  itemTierDefs: []
+  itemRelationshipProviders: []
+  itemRelationshipTypes: []
+  equipmentDefs: []
+  buffDefs:
+  - {fileID: 11400000, guid: 4f2dc5f84a435e4479dc76474484328b, type: 2}
+  - {fileID: 11400000, guid: c6ef8986dde686d40a7b0ce2633dc2b6, type: 2}
+  - {fileID: 11400000, guid: 6a1c447d3d393ba4eac04698de4c9f53, type: 2}
+  eliteDefs: []
+  unlockableDefs: []
+  survivorDefs:
+  - {fileID: 11400000, guid: e4143e81044e3c84eb3af71527309b75, type: 2}
+  artifactDefs: []
+  surfaceDefs: []
+  networkSoundEventDefs:
+  - {fileID: 11400000, guid: 0eb030405e405374097820e974507009, type: 2}
+  - {fileID: 11400000, guid: 60382e37852c97c4bbb4355cdbe598c5, type: 2}
+  - {fileID: 11400000, guid: 39f80f87e167698409e0911a17cbfbd5, type: 2}
+  - {fileID: 11400000, guid: 72495cf374613c4488147c7ef90fdc54, type: 2}
+  musicTrackDefs: []
+  gameEndingDefs: []
+  miscPickupDefs: []
+  entityStateConfigurations: []
+  entityStateTypes:
+  - _typeName: Daredevil.States.DaredevilMainState, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.UltraDevilMain, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.PrimaryRanged, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.PrimaryMelee, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.SecondaryRanged, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.SecondaryMelee, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.SecondaryLockOn, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.Coin, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.JetpackDash, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.JetpackVault, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.DeathSpin2Blink, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.DeathSpin2Fire, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.EquipBigGun, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.BigGunState, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.UnequipBigGun, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.NailgunFire, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.NailgunFireMissiles, Daredevil, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - _typeName: Daredevil.States.NailgunSpinUp, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.NailgunSpinDown, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.RailgunFire, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.RailgunFireTazer, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.RocketLauncherFire, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.FreezeProjectiles, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.ThawProjectiles, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.ShotgunFire, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: Daredevil.States.ShotgunFireBomb, Daredevil, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - _typeName: 
+  - _typeName: 
+  - _typeName: 
+  - _typeName: 
+  expansionDefs: []
+  entitlementDefs: []

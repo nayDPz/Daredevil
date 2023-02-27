@@ -15,6 +15,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using RiskOfOptions;
 
 using ModdedDamageType = R2API.DamageAPI.ModdedDamageType;
 
@@ -26,6 +27,8 @@ namespace Daredevil
 	[BepInDependency("com.bepis.r2api.language")]
 	[BepInDependency("com.bepis.r2api.prefab")]
 	[BepInDependency("com.bepis.r2api.unlockable")]
+
+	[BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
 
 	[BepInPlugin("com.nayDPz.Daredevil", "Daredevil", "1.0.0")]
 	public class DaredevilMain : BaseUnityPlugin
@@ -50,11 +53,26 @@ namespace Daredevil
 		public static DaredevilMain Instance { get; private set; }
 		public static PluginInfo PInfo { get; private set; }
 
+
+		internal static bool optionsInstalled;
+		internal static float comboVolume = 100f;
+		public static AudioManager.VolumeConVar cvComboVolume = new AudioManager.VolumeConVar("volume_combo", 
+			ConVarFlags.Archive | ConVarFlags.Engine, "100", 
+			"The sound volume for gaining combo, from 0 to 100.", "Volume_Combo");
+
 		private void Awake()
 		{
 			Instance = this;
 			PInfo = this.Info;
 			Log.Init(Logger);
+
+			Languages.Init();
+			Daredevil.Config.ReadConfig();
+
+			if (optionsInstalled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions"))
+				ModSettingsManager.AddOption(new RiskOfOptions.Options.SliderOption(Daredevil.Config.comboVolume));
+
+			Daredevil.Config.comboVolume.SettingChanged += (object sender, EventArgs args) => { cvComboVolume.AttemptSetString(Daredevil.Config.comboVolume.Value.ToString()); };
 
 			Assets.PopulateAssets();
 			DaredevilContent.Initialize();
@@ -74,6 +92,11 @@ namespace Daredevil
 			Hook();
 
 			ContentManager.onContentPacksAssigned += LateSetup;
+		}
+
+		public void Start()
+		{
+			cvComboVolume.AttemptSetString(Daredevil.Config.comboVolume.Value.ToString());
 		}
 
 		[SystemInitializer]
@@ -112,8 +135,8 @@ namespace Daredevil
 			bodyPrefab.GetComponent<CameraTargetParams>().cameraParams = Addressables.LoadAssetAsync<CharacterCameraParams>("RoR2/Base/Common/ccpStandard.asset").WaitForCompletion();
 			bodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion();
 			bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<FootstepHandler>().footstepDustPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/GenericFootstepDust.prefab").WaitForCompletion();
-		
-		
+			bodyPrefab.GetComponent<CharacterBody>().preferredPodPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/SurvivorPod/SurvivorPod.prefab").WaitForCompletion();
+
 		}
 
 		private void LateSetup(ReadOnlyArray<ReadOnlyContentPack> obj)
@@ -168,64 +191,70 @@ namespace Daredevil
 
 		private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
-			if (DamageAPI.HasModdedDamageType(damageInfo, armorShredOnHit))
-			{
-				self.body.AddTimedBuff(DaredevilContent.Buffs.shredArmor, 6f);
-			}
-			if (DamageAPI.HasModdedDamageType(damageInfo, knockupOnHit))
-			{
-				self.body.ClearTimedBuffs(DaredevilContent.Buffs.stunMarked);
-				if (self.body.characterMotor && !self.body.isBoss)
+			if(self.body)
+            {
+				if (DamageAPI.HasModdedDamageType(damageInfo, armorShredOnHit))
 				{
-					float knockup = 1f;
-					if(self.body.characterMotor.mass >= 700f)
-                    {
-						knockup = 0f;
-                    }
-					else if (self.body.characterMotor.mass >= 300f)
-                    {
-						knockup = 0.5f;
-                    }
-					
-					self.body.characterMotor.velocity = Vector3.zero;
-					self.body.characterMotor.Motor.ForceUnground();
+					self.body.AddTimedBuff(DaredevilContent.Buffs.shredArmor, 6f);
+				}
+				if (DamageAPI.HasModdedDamageType(damageInfo, knockupOnHit) && self.body)
+				{
+					self.body.ClearTimedBuffs(DaredevilContent.Buffs.stunMarked);
+					if (self.body.characterMotor && !self.body.isBoss)
+					{
+						float knockup = 1f;
+						if (self.body.characterMotor.mass >= 700f)
+						{
+							knockup = 0f;
+						}
+						else if (self.body.characterMotor.mass >= 300f)
+						{
+							knockup = 0.5f;
+						}
 
-					if (self.body.transform.position.y >= damageInfo.attacker.transform.position.y - 3f && self.body.transform.position.y <= damageInfo.attacker.transform.position.y)
-					{
-						self.body.characterMotor.AddDisplacement(Vector3.up * knockup);
+						self.body.characterMotor.velocity = Vector3.zero;
+						self.body.characterMotor.Motor.ForceUnground();
+
+						if (self.body.transform.position.y >= damageInfo.attacker.transform.position.y - 3f && self.body.transform.position.y <= damageInfo.attacker.transform.position.y)
+						{
+							self.body.characterMotor.AddDisplacement(Vector3.up * knockup);
+						}
+						if (self.body.transform.position.y > damageInfo.attacker.transform.position.y && self.body.transform.position.y <= damageInfo.attacker.transform.position.y + 6f)
+						{
+							self.body.characterMotor.AddDisplacement(Vector3.up * knockup * 0.67f);
+						}
 					}
-					if (self.body.transform.position.y > damageInfo.attacker.transform.position.y && self.body.transform.position.y <= damageInfo.attacker.transform.position.y + 6f)
+				}
+				if (DamageAPI.HasModdedDamageType(damageInfo, applyStunMark))
+				{
+					self.body.AddTimedBuff(DaredevilContent.Buffs.stunMarked, 2f);
+					self.body.ClearTimedBuffs(DaredevilContent.Buffs.stunMarkedCooldown);
+				}
+
+				if (damageInfo.attacker)
+				{
+					CharacterBody body = damageInfo.attacker.GetComponent<CharacterBody>();
+					if (damageInfo.attacker && body && body.bodyIndex == bodyIndex)
 					{
-						self.body.characterMotor.AddDisplacement(Vector3.up * knockup * 0.67f);
+						if (self.body.characterMotor && !self.body.isBoss)
+						{
+							if (self.body.characterMotor.mass >= 300f)
+							{
+								damageInfo.force *= self.body.characterMotor.mass / 450f;
+							}
+							else
+							{
+								damageInfo.force *= self.body.characterMotor.mass / 300f;
+							}
+						}
+						else
+						{
+							damageInfo.force = damageInfo.force.normalized * 75f;
+						}
 					}
 				}
 			}
-			if (DamageAPI.HasModdedDamageType(damageInfo, applyStunMark))
-			{
-				self.body.AddTimedBuff(DaredevilContent.Buffs.stunMarked, 2f);
-				self.body.ClearTimedBuffs(DaredevilContent.Buffs.stunMarkedCooldown);
-			}
-
-			CharacterBody body = damageInfo.attacker.GetComponent<CharacterBody>();
-			if (damageInfo.attacker && body && body.bodyIndex == bodyIndex)
-			{
-				if (self.body.characterMotor && !self.body.isBoss)
-				{
-					if (self.body.characterMotor.mass >= 300f)
-					{
-						damageInfo.force *= self.body.characterMotor.mass / 450f;
-					}
-					else
-					{
-						damageInfo.force *= self.body.characterMotor.mass / 300f;
-					}
-				}
-				else
-				{
-					damageInfo.force = damageInfo.force.normalized * 75f;
-				}
-			}
-
+						
 			orig(self, damageInfo);
 		}
 

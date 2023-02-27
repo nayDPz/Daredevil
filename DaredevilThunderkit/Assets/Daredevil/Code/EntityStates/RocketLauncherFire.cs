@@ -7,8 +7,10 @@ namespace Daredevil.States
 {
 	public class RocketLauncherFire : BaseSkillState
 	{
-		public static GameObject projectilePrefab = Assets.rocketPREFABBECAUSEIMSTILLNOTUSINGENTITYSTATECONFIGS;
-		public static string soundString = Sounds.rocketLauncherShoot;
+		
+		public GameObject projectilePrefab = Assets.rocketProjectilePrefab;
+		public string soundString = Sounds.rocketLauncherShoot;
+		public  GameObject muzzleEffectPrefab = Assets.muzzleFlashRocket;
 		public static float bloom = 0.5f;
 		public static float recoilAmplitude = 7f;
 		public static float baseDuration = 1.5f;
@@ -38,6 +40,7 @@ namespace Daredevil.States
 		private void Fire()
 		{
 			Util.PlaySound(soundString, base.gameObject);
+			EffectManager.SimpleMuzzleFlash(muzzleEffectPrefab, base.gameObject, "MuzzleBigGun", true);
 			AddRecoil(-1f * recoilAmplitude, -1.5f * recoilAmplitude, -0.25f * recoilAmplitude, 0.25f * recoilAmplitude);
 			base.characterBody.AddSpreadBloom(bloom);
 			Ray aimRay = GetAimRay();

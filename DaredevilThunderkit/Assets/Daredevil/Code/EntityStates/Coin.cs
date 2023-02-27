@@ -15,7 +15,7 @@ namespace Daredevil.States
 
 		public override void OnEnter()
 		{
-			this.baseDuration = 0.6f;
+			this.baseDuration = 0.5f;
 			base.OnEnter();
 		}
 

@@ -38,6 +38,8 @@ namespace Daredevil.States
 		private void Fire()
 		{
 			AddRecoil(-1f * recoilAmplitude, -1.5f * recoilAmplitude, -0.25f * recoilAmplitude, 0.25f * recoilAmplitude);
+
+			EffectManager.SimpleMuzzleFlash(Assets.muzzleFlashRocket, base.gameObject, "MuzzleBigGun", true);
 			base.characterBody.AddSpreadBloom(bloom);
 			Ray aimRay = GetAimRay();
 			if (base.isAuthority)

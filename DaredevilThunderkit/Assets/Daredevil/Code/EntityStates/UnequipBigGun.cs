@@ -3,7 +3,7 @@ using EntityStates;
 using EntityStates.Huntress;
 using RoR2;
 using UnityEngine;
-
+using RoR2.Projectile;
 namespace Daredevil.States
 {
 	public class UnequipBigGun : AimThrowableBase
@@ -38,9 +38,23 @@ namespace Daredevil.States
 				this.outer.SetNextStateToMain();
 				return;
 			}
+
+			#region cringe
+
+			ProjectileSingleTargetImpact c = projectilePrefab.GetComponent<ProjectileSingleTargetImpact>();
+			if(c)
+            {
+				c.impactEffect = Assets.gunImpactEffect;
+            }
+			#endregion
+
+
 			base.projectilePrefab = projectilePrefab;
 			this.damageCoefficient = 0.25f;
 			this.baseMinimumDuration = 0.1f;
+
+			base.StartAimMode();
+
 			base.OnEnter();
 			base.PlayAnimation("Gesture, Override", "PrepThrow");
 		}

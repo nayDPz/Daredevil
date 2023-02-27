@@ -31,23 +31,50 @@ namespace Daredevil
 		internal static SkillDef ultraSkill;
 
 		internal static GameObject captainTracer;
-		internal static GameObject rocketPREFABBECAUSEIMSTILLNOTUSINGENTITYSTATECONFIGS;
+		internal static GameObject rocketProjectilePrefab;
 		internal static GameObject STOLENFROMMERCXDD;
 		internal static GameObject shotgunBombProjectile;
 		internal static GameObject rocketEXPLOSIONEFFECTISTOLEFROMMULT;
 		internal static GameObject railgunTazerProjectileREPLACETHISEVENTUALLY;
 		internal static GameObject railgunTracer;
 		internal static GameObject nailTracer;
+
+		internal static GameObject muzzleFlashNailgun;
+		internal static GameObject muzzleFlashRailgun;
+		internal static GameObject muzzleFlashRocket;
+		internal static GameObject muzzleFlashShotgun;
+		internal static GameObject muzzleFlashPistol;
+		internal static GameObject muzzleFlashRevolver;
+
+		internal static GameObject pistolHit;
+		internal static GameObject revolverHit;
+
+
+		internal static GameObject gunImpactEffect;
+
+		internal static GameObject pistolTracer;
+		internal static GameObject revolverTracer;
 		internal static GameObject coinTracer;
 		internal static GameObject coinOrbEffect;
 		internal static GameObject coinProjectile;
+
+
+		internal static GameObject jetpackBurst;
+		internal static GameObject jetpackDashEffect;
+		internal static GameObject jetpackChargeEffect;
 
 		internal static NetworkSoundEventDef swordHitSoundEvent;
 		internal static NetworkSoundEventDef sword2HitSoundEvent;
 
 		public static Material commandoMat;
 
-		
+		public static Dictionary<string, string> ShaderSwap = new Dictionary<string, string>()
+		{
+			{"stubbed hopoo games/deferred/standard",  "HGStandard.shader"},
+			{"stubbed hopoo games/fx/cloud remap",  "HGCloudRemap.shader"},
+			{"stubbed hopoo games/fx/distortion",  "HGDistortion.shader"}
+		};
+
 		public static List<GameObject> clonedVanillaProjectiles = new List<GameObject>();
 		public static string AssetBundlePath => System.IO.Path.Combine(System.IO.Path.GetDirectoryName(DaredevilMain.PInfo.Location), "daredevilassets");
 
@@ -69,7 +96,7 @@ namespace Daredevil
 			ContentAddition.AddEffect(mainAssetBundle.LoadAsset<GameObject>("GunProjectileImpact"));
 
 			// xDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
-			rocketPREFABBECAUSEIMSTILLNOTUSINGENTITYSTATECONFIGS = mainAssetBundle.LoadAsset<GameObject>("RocketProjectile");
+			rocketProjectilePrefab = mainAssetBundle.LoadAsset<GameObject>("RocketProjectile");
 			railgunTazerProjectileREPLACETHISEVENTUALLY = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/CaptainTazer.prefab").WaitForCompletion(), "DaredevilRailgunTazer");
 			
 			railgunTazerProjectileREPLACETHISEVENTUALLY.GetComponent<ProjectileDamage>();
@@ -91,28 +118,56 @@ namespace Daredevil
 			unequipSkill = mainAssetBundle.LoadAsset<SkillDef>("sdDaredevilUnequip");
 			specialSkill = mainAssetBundle.LoadAsset<SkillDef>("sdDaredevilSpecial");
 			ultraSkill = mainAssetBundle.LoadAsset<SkillDef>("DaredevilUltraSpecial");
-			
-			
 
+			muzzleFlashNailgun = mainAssetBundle.LoadAsset<GameObject>("MuzzleFlashNailgun");
+			muzzleFlashRailgun = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Railgunner/MuzzleflashRailgun.prefab").WaitForCompletion();
+			muzzleFlashShotgun = mainAssetBundle.LoadAsset<GameObject>("MuzzleFlashShotgun");
+			muzzleFlashRocket = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/MuzzleflashSmokeRing.prefab").WaitForCompletion();
+
+			gunImpactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Toolbot/ImpactToolbotDash.prefab").WaitForCompletion();
+
+			muzzleFlashPistol = mainAssetBundle.LoadAsset<GameObject>("MuzzleFlashPistol");
+			muzzleFlashRevolver = mainAssetBundle.LoadAsset<GameObject>("MuzzleFlashRevolver");
+
+			jetpackBurst = mainAssetBundle.LoadAsset<GameObject>("JetpackBurstEffect");
+			jetpackChargeEffect = mainAssetBundle.LoadAsset<GameObject>("JetpackChargeEffect");
+			jetpackDashEffect = mainAssetBundle.LoadAsset<GameObject>("JetpackBoostEffect");
+
+			railgunTracer = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Railgunner/TracerRailgunSuper.prefab").WaitForCompletion();
 			captainTracer = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/TracerCaptainShotgun.prefab").WaitForCompletion();
 			railgunTracer = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Railgunner/TracerRailgunSuper.prefab").WaitForCompletion();
-			nailTracer = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Toolbot/TracerToolbotNails.prefab").WaitForCompletion();			
-			coinTracer = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/GoldGat/TracerGoldGat.prefab").WaitForCompletion();
-			coinOrbEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/LoaderLightningOrbEffect.prefab").WaitForCompletion();
+			nailTracer = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Toolbot/TracerToolbotNails.prefab").WaitForCompletion();
+
+			pistolHit = mainAssetBundle.LoadAsset<GameObject>("BulletImpact");
+			revolverHit = mainAssetBundle.LoadAsset<GameObject>("BulletImpactBig");
+
+			pistolTracer = mainAssetBundle.LoadAsset<GameObject>("BulletTracer");
+			revolverTracer = mainAssetBundle.LoadAsset<GameObject>("BulletTracerBig");
+			coinTracer = mainAssetBundle.LoadAsset<GameObject>("CoinTracer"); //Addressables.LoadAssetAsync<GameObject>("RoR2/Base/GoldGat/TracerGoldGat.prefab").WaitForCompletion();
+			coinOrbEffect = mainAssetBundle.LoadAsset<GameObject>("CoinOrbEffect"); //Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/LoaderLightningOrbEffect.prefab").WaitForCompletion();
 			
 		}
 
 		internal static void SwapShaders(AssetBundle assetBundle)
 		{
-			Material[] mats = assetBundle.LoadAllAssets<Material>().Where(mat => mat.shader.name.Equals("Standard")).ToArray();//.Equals("Hopoo Games/Deferred/Standard")).ToArray();
+			Material[] mats = assetBundle.LoadAllAssets<Material>();
 
 			foreach (Material mat in mats)
 			{
-				Shader shader = Addressables.LoadAssetAsync<Shader>("RoR2/Base/Shaders/HGStandard.shader").WaitForCompletion();
-				if (shader)
-				{
-					mat.shader = shader;
+				//Log.LogDebug(mat.name + "||" + mat.shader.name + " ----------------------------- ");
+				if (!mat.shader.name.StartsWith("Stubbed")) continue;
+
+				if (ShaderSwap.TryGetValue(mat.shader.name.ToLower(), out string shaderKey))
+                {
+					Shader shader = Addressables.LoadAssetAsync<Shader>("RoR2/Base/Shaders/" + shaderKey).WaitForCompletion();
+					if (shader)
+					{
+						mat.shader = shader;
+						//Log.LogInfo("Swapped shader for " + mat.name);
+					}
 				}
+
+				
 			}
 		}
 	}

@@ -9,22 +9,36 @@ namespace Daredevil.Components
 	public class CoinRicochetOrb : GenericDamageOrb
 	{
 		public static GameObject orbPrefab = Assets.coinOrbEffect;
+		public static float redDamageCoefficient = 16f;
 
 		public ComboController comboController;
 		public float searchRadius = 50f;
 		public SphereSearch search;
 		public Vector3 coinPosition;
 
+		public float damageCoefficient = 1f;
+
 		public override void Begin()
 		{
 			this.target = PickNextTarget(this.coinPosition);
-			base.Begin();
+			
+			this.duration = this.distanceToTarget / this.speed;
+
+			Color color = Color.Lerp(Color.yellow, Color.red, damageCoefficient / redDamageCoefficient);
+			float scale = Mathf.Lerp(1, 2f, damageCoefficient / redDamageCoefficient);
+			EffectData effectData = new EffectData
+			{
+				scale = this.scale * scale,
+				origin = this.coinPosition,
+				genericFloat = this.duration,
+				color = color,
+			};
+			effectData.SetHurtBoxReference(this.target);
+			EffectManager.SpawnEffect(Assets.coinOrbEffect, effectData, true);
+
+			//Log.LogInfo(Assets.coinOrbEffect + " to " + this.target + " in " + effectData.genericFloat + "s");
 		}
 
-		public override GameObject GetOrbEffect()
-		{
-			return orbPrefab;
-		}
 
 		public override void OnArrival()
 		{
@@ -90,7 +104,6 @@ namespace Daredevil.Components
 
 				List<IShootable> shootables = new List<IShootable>();
 				hurtBox.healthComponent.GetComponents(shootables);
-
 				foreach (IShootable shootable in shootables)
 				{
 					if (shootable.CanBeShot())
@@ -118,7 +131,7 @@ namespace Daredevil.Components
 					}
 				}
 			}
-			Log.LogWarning("RICHOCHET TO " + target);
+			//Log.LogWarning("RICHOCHET TO " + target);
 			return target;
 		}
 	}

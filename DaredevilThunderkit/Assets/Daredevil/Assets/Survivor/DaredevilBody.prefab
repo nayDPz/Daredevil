@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 3649662869287887159}
   - component: {fileID: 2763695002384670456}
   - component: {fileID: 5162388520638182168}
+  - component: {fileID: 7410517430546762300}
   - component: {fileID: 9184786213660554669}
   - component: {fileID: 1660784439705420524}
   - component: {fileID: 6435265015042226422}
@@ -129,7 +130,6 @@ GameObject:
   - component: {fileID: 4670650622423358350}
   - component: {fileID: 414461340179669209}
   - component: {fileID: 5894990899118758753}
-  - component: {fileID: 7410517430546762300}
   - component: {fileID: 91243169794986807}
   - component: {fileID: -4858090592259135433}
   - component: {fileID: 4745881747772490339}
@@ -270,7 +270,8 @@ MonoBehaviour:
   currentVehicle: {fileID: 0}
   preferredPodPrefab: {fileID: 0}
   preferredInitialStateType:
-    _typeName: 
+    _typeName: EntityStates.GenericCharacterPod, RoR2, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   skinIndex: 0
   customKillTotalStatName: 
   overrideCoreTransform: {fileID: 0}
@@ -524,6 +525,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hideAllyCardDisplay: 0
   _teamIndex: -1
+--- !u!114 &7410517430546762300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8383480517167273634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1568778350, guid: 050936fea8909af15a3fd3b64da1ff83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterController: {fileID: 9184786213660554669}
+  Capsule: {fileID: 5894990899118758753}
+  Rigidbody: {fileID: 414461340179669209}
+  CapsuleRadius: 0.4
+  CapsuleHeight: 2.52
+  CapsuleYOffset: -0.04
+  CapsulePhysicsMaterial: {fileID: 0}
+  DetectDiscreteCollisions: 0
+  GroundDetectionExtraDistance: 0
+  MaxStepHeight: 0.2
+  MinRequiredStepDepth: 0.1
+  MaxStableSlopeAngle: 55
+  MaxStableDistanceFromLedge: 0.5
+  PreventSnappingOnLedges: 0
+  MaxStableDenivelationAngle: 55
+  RigidbodyInteractionType: 0
+  PreserveAttachedRigidbodyMomentum: 1
+  HasPlanarConstraint: 0
+  PlanarConstraintAxis: {x: 0, y: 0, z: 1}
+  StepHandling: 1
+  LedgeHandling: 1
+  InteractiveRigidbodyHandling: 1
+  SafeMovement: 0
 --- !u!114 &9184786213660554669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -740,41 +776,6 @@ CapsuleCollider:
   m_Height: 2.52
   m_Direction: 1
   m_Center: {x: 0, y: -0.04, z: 0}
---- !u!114 &7410517430546762300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8383480517167273634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1568778350, guid: 050936fea8909af15a3fd3b64da1ff83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CharacterController: {fileID: 9184786213660554669}
-  Capsule: {fileID: 5894990899118758753}
-  Rigidbody: {fileID: 414461340179669209}
-  CapsuleRadius: 0.4
-  CapsuleHeight: 2.52
-  CapsuleYOffset: -0.04
-  CapsulePhysicsMaterial: {fileID: 0}
-  DetectDiscreteCollisions: 0
-  GroundDetectionExtraDistance: 0
-  MaxStepHeight: 0.2
-  MinRequiredStepDepth: 0.1
-  MaxStableSlopeAngle: 55
-  MaxStableDistanceFromLedge: 0.5
-  PreventSnappingOnLedges: 0
-  MaxStableDenivelationAngle: 55
-  RigidbodyInteractionType: 0
-  PreserveAttachedRigidbodyMomentum: 1
-  HasPlanarConstraint: 0
-  PlanarConstraintAxis: {x: 0, y: 0, z: 1}
-  StepHandling: 1
-  LedgeHandling: 1
-  InteractiveRigidbodyHandling: 1
-  SafeMovement: 0
 --- !u!114 &91243169794986807
 MonoBehaviour:
   m_ObjectHideFlags: 0

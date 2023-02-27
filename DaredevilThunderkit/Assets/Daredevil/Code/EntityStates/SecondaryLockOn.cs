@@ -15,7 +15,7 @@ namespace Daredevil.States
 		public static int maxTargets = 4;
 		public static float damageCoefficient = 1.2f;
 		public static float procCoefficient = 0.5f;
-		public static float maxBaseDuration = 1.5f;
+		public static float maxBaseDuration = 2.1f;
 		public static float baseDuration = 0.6f;
 		public static float recoil = 3f;
 
@@ -32,6 +32,7 @@ namespace Daredevil.States
 		private WeaponController weaponController;
 		private CameraTargetParams.AimRequest aimRequest;
 		private List<LockOnTarget> targetList;
+		private Vector3 direction;
 		private int targetIndex;
 
 		public GameObject tracerEffectPrefab = Assets.coinTracer;
@@ -166,6 +167,7 @@ namespace Daredevil.States
 
 		private void FireAt(HurtBox fireTarget)
 		{
+
 			if (fireTarget.healthComponent.body.characterMotor)
 			{
 				fireTarget.healthComponent.body.characterMotor.useGravity = false;
@@ -176,19 +178,35 @@ namespace Daredevil.States
 				this.addCombo = false;
 			}
 
-			string s = ((shotsFired % 2f == 1f) ? "Left" : "Right");
+			bool left = shotsFired % 2f == 1f;
+			string s = left ? "Left" : "Right";
 			Util.PlaySound("QuickShot" + s, base.gameObject);
-			string muzzleName = "Muzzle" + s;
-			base.PlayAnimation("Gesture, Additive", "QuickShot" + s);
-			EffectManager.SimpleMuzzleFlash(FirePistol2.muzzleEffectPrefab, base.gameObject, muzzleName, false);
+			
+            base.PlayAnimation("Gesture, Additive", "QuickShot" + s);
+
+			string muzzleName = left ? "MuzzlePistol" : "MuzzleRevolver";
+			GameObject mf = (shotsFired % 2f == 1f) ? Assets.muzzleFlashPistol : Assets.muzzleFlashRevolver;
+			EffectManager.SimpleMuzzleFlash(mf, base.gameObject, muzzleName, true);
 
 			if (base.isAuthority)
 			{
-				Vector3 position = fireTarget.transform.position;
+
+				Vector3 rOffset = UnityEngine.Random.insideUnitSphere * 1.5f;
+
+				Vector3 position = fireTarget.transform.position + rOffset;
 				Vector3 between = base.transform.position - position;
+
+				
 				base.characterDirection.forward = between * -1f;
+
+				this.direction = base.characterDirection.forward;
+
 				shotsFired += 1f;
-				EffectManager.SimpleImpactEffect(HealthComponent.AssetReferences.crowbarImpactEffectPrefab, position, between, true);
+
+				GameObject impact = shotsFired % 2 == 1 ? Assets.pistolHit : Assets.revolverHit;
+				GameObject tracer = shotsFired % 2 == 1 ? Assets.pistolTracer : Assets.revolverTracer;
+
+				EffectManager.SimpleImpactEffect(impact, position, between, true);
 
 				if (this.tracerEffectPrefab)
 				{
@@ -197,7 +215,7 @@ namespace Daredevil.States
 						origin = position,
 						start = base.transform.position
 					};
-					EffectManager.SpawnEffect(this.tracerEffectPrefab, effectData, true);
+					EffectManager.SpawnEffect(tracer, effectData, true);
 				}
 
 				DamageInfo damageInfo = new DamageInfo
@@ -205,7 +223,7 @@ namespace Daredevil.States
 					attacker = base.gameObject,
 					damage = damageCoefficient * this.damageStat,
 					procCoefficient = procCoefficient,
-					position = fireTarget.transform.position,
+					position = position,
 					damageColorIndex = DamageColorIndex.Default,
 					damageType = DamageType.Generic,
 					crit = this.crit
@@ -296,6 +314,7 @@ namespace Daredevil.States
 			if (this.shootStage)
 			{
 				base.characterMotor.velocity = Vector3.zero;
+				
 				this.fireStopwatch += Time.fixedDeltaTime;
 				if (this.fireStopwatch >= this.fireInterval && this.shotsFired < this.totalShots && this.targetList.Count != 0)
 				{
@@ -305,6 +324,10 @@ namespace Daredevil.States
 					this.targetList[targetIndex].timesShot++;
 					FireAt(hurtBox);
 				}
+
+				if(this.shotsFired > 0) //XDD
+					base.characterDirection.forward = this.direction;
+
 				if (this.fireStopwatch >= this.fireInterval * 2f)
 				{
 					this.outer.SetNextStateToMain();
@@ -312,7 +335,7 @@ namespace Daredevil.States
 			}
 			CleanTargetList();
 			if ((base.isAuthority && this.shotsFired >= this.totalShots && this.fireStopwatch >= this.fireInterval)
-				|| (this.targetList.Count == 0 && this.fireStopwatch >= this.fireInterval))
+				|| this.targetList.Count == 0)
 			{
 				this.exitForce *= this.moveSpeedStat;
 				if (base.inputBank.moveVector != Vector3.zero)

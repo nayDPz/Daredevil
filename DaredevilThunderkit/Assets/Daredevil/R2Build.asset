@@ -18,24 +18,6 @@ MonoBehaviour:
   recurseDirectories: 0
   simulate: 0
   BundleArtifactPath: <AssetBundleStaging>
---- !u!114 &-3110221042607478563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 924ee63e6c016f14d8a1560b288f15a3, type: 3}
-  m_Name: StageAssetBundles
-  m_EditorClassIdentifier: 
-  Active: 1
-  AssetBundleBuildOptions: 1
-  buildTarget: 5
-  recurseDirectories: 0
-  simulate: 0
-  BundleArtifactPath: <R2Modman>
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,7 +32,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
   - {fileID: 579896982616963051}
-  - {fileID: -3110221042607478563}
+  - {fileID: 5315281352802850125}
+  - {fileID: 0}
   QuickAccess: 0
   manifest: {fileID: 11400000, guid: c62fcc94c72413747a4380ee32bb75f2, type: 2}
 --- !u!114 &579896982616963051
@@ -70,3 +53,39 @@ MonoBehaviour:
   releaseBuild: 1
   assemblyArtifactPath: <R2Modman>
   buildTarget: 5
+--- !u!114 &5315281352802850125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282a56da18a15c4448d0306f8706ed78, type: 3}
+  m_Name: StageAssetBundlesAndSwapShaders
+  m_EditorClassIdentifier: 
+  Active: 1
+  AssetBundleBuildOptions: 1
+  buildTarget: 5
+  recurseDirectories: 0
+  simulate: 0
+  BundleArtifactPath: <R2Modman>
+--- !u!114 &5573523787156234993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924ee63e6c016f14d8a1560b288f15a3, type: 3}
+  m_Name: StageAssetBundles
+  m_EditorClassIdentifier: 
+  Active: 1
+  AssetBundleBuildOptions: 1
+  buildTarget: 5
+  recurseDirectories: 0
+  simulate: 0
+  BundleArtifactPath: <AssetBundleStaging>

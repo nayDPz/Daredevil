@@ -14,9 +14,9 @@ namespace Daredevil.States
 		public static float baseDuration = 0.6f;
 		public static float earlyExitTime = 0.75f;
 		public static float minDuration = 0.2f;
-		public static float vaultForce = 1800f;
+		public static float vaultForce = 2100f;
 		public static float coinLaunchMaxDistance = 60f;
-		public static float damageCoefficient = 3f;
+		public static float damageCoefficient = 6f;
 
 		public List<GameObject> hitCoinObjects;
 		public List<CoinProjectileController> hitCoins;
@@ -41,9 +41,13 @@ namespace Daredevil.States
 
 			base.characterMotor.ApplyForce(force, true);
 			base.PlayAnimation("FullBody, Override", "UtilityBackflip");
-			Util.PlaySound("Play_treeBot_shift_shoot", base.gameObject);
+			Util.PlaySound(Sounds.jetpackBurst, base.gameObject);
 
 			HitBoxGroup hitBoxGroup = FindHitBoxGroup("VaultHitbox");
+
+
+			EffectManager.SimpleEffect(Assets.jetpackBurst, base.characterBody.corePosition,
+				Util.QuaternionSafeLookRotation(direction), false);
 
 			if (base.isAuthority)
 			{
@@ -105,10 +109,10 @@ namespace Daredevil.States
 				if (hurtBoxes.Length != 0)
 				{
 					int hurtboxIndex = i % hurtBoxes.Length;
-					Log.LogDebug("OFF OF " + hurtBoxes[hurtboxIndex].healthComponent.name);
+					//Log.LogDebug("OFF OF " + hurtBoxes[hurtboxIndex].healthComponent.name);
 					coinDirection = (hurtBoxes[hurtboxIndex].transform.position - base.transform.position).normalized;
 				}
-				Log.LogDebug("COIN RELAUNCH " + i + " , " + coinDirection);
+				//Log.LogDebug("COIN RELAUNCH " + i + " , " + coinDirection);
 				if (coin)
 				{
 					float multiplier = CoinProjectileController.baseRicochetMultiplier;

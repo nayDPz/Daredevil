@@ -18,7 +18,7 @@ MonoBehaviour:
     type: 3}
   unlockableName: 
   unlockableDef: {fileID: 0}
-  displayNameToken: ORB_DAREDEVIL_BODY_NAME
+  displayNameToken: ORB_DAREDEVIL_NAME
   descriptionToken: ORB_DAREDEVIL_DESCRIPTION
   outroFlavorToken: ORB_DAREDEVIL_OUTRO_FLAVOR
   mainEndingEscapeFailureFlavorToken: ORB_DAREDEVIL_MAIN_ENDING_ESCAPE_FAILURE_FLAVOR

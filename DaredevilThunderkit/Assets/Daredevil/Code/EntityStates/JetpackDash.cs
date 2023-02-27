@@ -11,8 +11,8 @@ namespace Daredevil.States
 	public class JetpackDash : BaseSkillState
 	{
 		public static float duration = 0.5f;
-		public static float baseHitPauseDuration = 0.3f;
-		public static float minHitPauseDuration = 0.1f;
+		public static float baseHitPauseDuration = 0.5f;
+		public static float minHitPauseDuration = 0.2f;
 		public static float initialSpeedCoefficient = 11f;
 		public static float finalSpeedCoefficient = 0f;
 
@@ -55,6 +55,9 @@ namespace Daredevil.States
 			this.hitPauseDuration = Mathf.Max(baseHitPauseDuration / this.attackSpeedStat, minHitPauseDuration);
 			base.PlayAnimation("FullBody, Override", "UtilityDash");
 			Util.PlaySound(SlideState.soundString, base.gameObject);
+
+			Quaternion direction = Util.QuaternionSafeLookRotation(this.dashDirection * -1f);
+			EffectManager.SimpleEffect(Assets.jetpackDashEffect, base.characterBody.corePosition, direction, false);
 		}
 
 		private void RecalculateRollSpeed()
@@ -85,7 +88,9 @@ namespace Daredevil.States
 				this.stopwatch += Time.fixedDeltaTime;
 			}
 
+			base.inputBank.moveVector = Vector3.zero;
 			base.characterDirection.forward = dashDirection;
+			base.characterDirection.moveVector = Vector3.zero; ///// ???????????????
 			base.characterMotor.velocity = Vector3.zero;
 
 			if (base.isAuthority && this.stopwatch >= duration)
@@ -126,9 +131,15 @@ namespace Daredevil.States
 			if (!this.hasHit)
 			{
 				base.PlayAnimation("FullBody, Override", "UtilityHit");
+				
 				float moveSpeedMultiplier = this.moveSpeedStat / base.characterBody.baseMoveSpeed;
 				this.hitPauseTimer = this.hitPauseDuration / moveSpeedMultiplier;
 				this.hasHit = true;
+
+				Util.PlayAttackSpeedSound(Sounds.jetpackChargeUp, base.gameObject, moveSpeedMultiplier);
+				GameObject charge = GameObject.Instantiate<GameObject>(Assets.jetpackChargeEffect, base.characterBody.coreTransform);
+				charge.GetComponent<ScaleParticleSystemDuration>().newDuration = this.hitPauseTimer;
+
 			}
 		}
 

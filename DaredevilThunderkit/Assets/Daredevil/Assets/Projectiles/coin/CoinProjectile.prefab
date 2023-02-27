@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3947222326038048128}
   - component: {fileID: 1081821330121571869}
   m_Layer: 12
-  m_Name: Hurtbox
+  m_Name: CoinHurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 5640090543960826937}
   - component: {fileID: 7563756384142162459}
   - component: {fileID: 4595835427582224085}
+  - component: {fileID: 7991338098457588602}
   m_Layer: 17
   m_Name: CoinProjectile
   m_TagString: Untagged
@@ -405,6 +406,28 @@ MonoBehaviour:
   ricochetSound: {fileID: 11400000, guid: 0eb030405e405374097820e974507009, type: 2}
   canRicochet: 1
   ricochetMultiplier: 2
+--- !u!114 &7991338098457588602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992027840579068768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1699741063, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _modelTransform: {fileID: 2644156402314044272}
+  modelBaseTransform: {fileID: 0}
+  autoUpdateModelTransform: 1
+  dontDetatchFromParent: 1
+  noCorpse: 1
+  dontReleaseModelOnDeath: 0
+  preserveModel: 0
+  normalizeToFloor: 0
+  normalSmoothdampTime: 0.1
+  normalMaxAngleDelta: 90
 --- !u!1 &7886542835746024827
 GameObject:
   m_ObjectHideFlags: 0

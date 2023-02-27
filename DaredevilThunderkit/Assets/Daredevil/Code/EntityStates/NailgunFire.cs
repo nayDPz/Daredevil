@@ -13,12 +13,12 @@ namespace Daredevil.States
 		public static float bulletMaxSpread = 6f;
 		public static float baseMaxFireInterval = 0.33f;
 		public static float baseMinFireInterval = 0.05f;
-		public static float windupDuration = 2f;
+		public static float baseWindupDuration = 1.25f;
 		public static float bulletMaxDistance = 128f;
-		public static float maxDamageCoefficientPerSecond = 12f;
+		public static float maxDamageCoefficientPerSecond = 12.5f;
 		public static float maxProcCoefficientPerSecond = 3f;
 
-		public DaredevilWeaponDef weaponDef;
+		public GameObject muzzlePrefab = Assets.muzzleFlashNailgun;
 		public GameObject tracerPrefab;
 		public GameObject impactPrefab;
 
@@ -26,6 +26,7 @@ namespace Daredevil.States
 
 		private float bulletSpread;
 		private float fireInterval;
+		private float windupDuration;
 		private float baseBulletsPerSecond;
 		private float baseFireRate;
 		private float soundStopwatch;
@@ -39,6 +40,7 @@ namespace Daredevil.States
 		{
 			base.OnEnter();
 			this.tracerPrefab = Assets.nailTracer;
+			this.windupDuration = baseWindupDuration / this.attackSpeedStat;
 			this.baseFireRate = 1f / baseMinFireInterval;
 			this.baseBulletsPerSecond = baseBulletCount * this.baseFireRate;
 			this.critEndTime = Run.FixedTimeStamp.negativeInfinity;
@@ -59,7 +61,7 @@ namespace Daredevil.States
 				this.lastCritCheck = Run.FixedTimeStamp.now;
 				if (RollCrit())
 				{
-					this.critEndTime = Run.FixedTimeStamp.now + 2f;
+					this.critEndTime = Run.FixedTimeStamp.now + 1f;
 				}
 			}
 		}
@@ -67,8 +69,12 @@ namespace Daredevil.States
 		public override void FixedUpdate()
 		{
 			base.FixedUpdate();
-			this.bulletSpread = Mathf.Lerp(bulletMaxSpread, finalBulletMaxSpread, base.fixedAge / windupDuration);
+
+			base.characterBody.outOfCombatStopwatch = 0f;
+
+			this.bulletSpread = Mathf.Lerp(bulletMaxSpread, finalBulletMaxSpread, base.fixedAge / baseWindupDuration);
 			this.fireInterval = Mathf.Lerp(baseMaxFireInterval, baseMinFireInterval, base.fixedAge / windupDuration);
+
 			StartAimMode();
 			this.soundInterval = this.fireInterval / baseBulletCount;
 			this.soundStopwatch -= Time.fixedDeltaTime;
@@ -94,6 +100,8 @@ namespace Daredevil.States
 			if (base.isAuthority)
 			{
 				PlayCrossfade("Gesture, Override", "FireSmall", "fireSmall.playbackRate", baseMaxFireInterval, 0.025f);
+				EffectManager.SimpleMuzzleFlash(muzzlePrefab, base.gameObject, "MuzzleBigGun", true);
+
 				UpdateCrits();
 
 				bool crit = !critEndTime.hasPassed;

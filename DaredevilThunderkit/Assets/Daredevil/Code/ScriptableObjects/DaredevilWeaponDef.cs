@@ -68,19 +68,17 @@ public class DaredevilWeaponDef : ScriptableObject
 		if (primarySkill && weaponEquipInfo.primary)
 		{
 			weaponEquipInfo.primary.UnsetSkillOverride(weaponEquipInfo.gameObject, this.primarySkill, GenericSkill.SkillOverridePriority.Upgrade);
-			weaponEquipInfo.primary.rechargeStopwatch = 0f;
 			weaponEquipInfo.primary.RunRecharge(timeEquipped);
+			
 		}
 		if (secondarySkill && weaponEquipInfo.secondary)
 		{
 			weaponEquipInfo.secondary.UnsetSkillOverride(weaponEquipInfo.gameObject, this.secondarySkill, GenericSkill.SkillOverridePriority.Upgrade);
-			weaponEquipInfo.secondary.rechargeStopwatch = 0f;
-			weaponEquipInfo.secondary.RunRecharge(timeEquipped);
+			weaponEquipInfo.secondary.RunRecharge(timeEquipped);	
 		}
 		if (utilitySkill && weaponEquipInfo.utility)
 		{
 			weaponEquipInfo.utility.UnsetSkillOverride(weaponEquipInfo.gameObject, this.utilitySkill, GenericSkill.SkillOverridePriority.Upgrade);
-			weaponEquipInfo.utility.rechargeStopwatch = 0f;
 			weaponEquipInfo.utility.RunRecharge(timeEquipped);
 		}
 		if (weaponEquipInfo.special && EquipSkillOverride)

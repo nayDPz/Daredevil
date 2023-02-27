@@ -110,19 +110,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.0041656494
-      value: 1
-      inSlope: -1.0164522
-      outSlope: -1.0164522
+      time: -0.0121536255
+      value: 0.8826332
+      inSlope: -0.91962814
+      outSlope: -0.91962814
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.9833374
-      value: 0.0047187805
-      inSlope: -1.0164522
-      outSlope: -1.0164522
+      value: -0.03284836
+      inSlope: -0.91962814
+      outSlope: -0.91962814
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -2488,8 +2488,8 @@ MonoBehaviour:
   m_Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxPriority: 0
-  vfxIntensity: 0
+  vfxPriority: 2
+  vfxIntensity: 2
   optionalLights: []
   secondaryParticleSystem: []
 --- !u!114 &5553940967584456524

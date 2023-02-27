@@ -24,10 +24,7 @@ namespace Daredevil.States
 			if (base.fixedAge >= this.duration && base.isAuthority)
 			{
 				this.cancelled = false;
-				this.outer.SetNextState(new NailgunFire
-				{
-					weaponDef = this.weaponDef
-				});
+				this.outer.SetNextState(new NailgunFire());
 			}
 		}
 

@@ -32,7 +32,8 @@
         "R2API.Prefab.dll",
         "R2API.Unlockable.dll",
         "Wwise.dll",
-        "KinematicCharacterController.dll"
+        "KinematicCharacterController.dll",
+        "RiskOfOptions.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 3735026897947055495}
   - component: {fileID: 1365409953761723987}
   - component: {fileID: 7636749682140562425}
+  - component: {fileID: 6824009670359084411}
   m_Layer: 14
   m_Name: RocketProjectile
   m_TagString: Untagged
@@ -431,6 +432,28 @@ MonoBehaviour:
   - {fileID: 4823735663263469011}
   collidersB:
   - {fileID: 6742474269111395151}
+--- !u!114 &6824009670359084411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193141527753475696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1699741063, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _modelTransform: {fileID: 546705007970760049}
+  modelBaseTransform: {fileID: 0}
+  autoUpdateModelTransform: 1
+  dontDetatchFromParent: 1
+  noCorpse: 1
+  dontReleaseModelOnDeath: 0
+  preserveModel: 0
+  normalizeToFloor: 0
+  normalSmoothdampTime: 0.1
+  normalMaxAngleDelta: 90
 --- !u!1 &5169137069716766460
 GameObject:
   m_ObjectHideFlags: 0

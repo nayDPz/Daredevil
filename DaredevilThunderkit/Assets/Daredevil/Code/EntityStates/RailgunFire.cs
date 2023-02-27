@@ -15,7 +15,10 @@ namespace Daredevil.States
 			force = 4000f;
 			tracerEffectPrefab = Assets.railgunTracer;
 			maxDistance = 1000f;
+			muzzleName = "MuzzleBigGun";
+			muzzleFlashPrefab = Assets.muzzleFlashRailgun;
 
+			muzzleFlashPrefab.GetComponent<EffectComponent>().parentToReferencedTransform = true; // fuvking stupid
 			base.OnEnter();
 		}
 

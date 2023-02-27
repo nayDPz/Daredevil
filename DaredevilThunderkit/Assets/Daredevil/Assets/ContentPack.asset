@@ -27,6 +27,19 @@ MonoBehaviour:
   - {fileID: 2102239401752920829, guid: e46653cc1f39d8944be20e06bff8f795, type: 3}
   - {fileID: 1273847131483486, guid: be86b340e8d594841b9b8100ce1fc0a4, type: 3}
   - {fileID: 1273847131483486, guid: fb3eb6f4890bf1445bf572da5b4c3134, type: 3}
+  - {fileID: 99769960323370813, guid: 1f47a42929433654ab7a40ec5747b6b8, type: 3}
+  - {fileID: 6399074728173142065, guid: 5fbbb7c9e957bc44fb2f243b70d2cfc6, type: 3}
+  - {fileID: 6399074728173142065, guid: f9442435c72d72042a1b0d0b67ff3b0a, type: 3}
+  - {fileID: 99769960323370813, guid: 2b84a346593cfbb429601ff2deff2db4, type: 3}
+  - {fileID: 99769960323370813, guid: 3c86daa95186f7641a3c6c3be1dfb10f, type: 3}
+  - {fileID: 6399074728173142065, guid: f4d49a92a9cc700458a1df7fbbed5482, type: 3}
+  - {fileID: 1702947716422087, guid: 3cfe735ee19ed9641ad0adbf8904e72c, type: 3}
+  - {fileID: 1596021342076237, guid: 46bf28bab3e984544bbd3d86b6a275e1, type: 3}
+  - {fileID: 1596021342076237, guid: e437c25dc34cfa14fa916fc680fcef2c, type: 3}
+  - {fileID: 1596021342076237, guid: 75440af24a97a704297af96b6961a4fd, type: 3}
+  - {fileID: 1596021342076237, guid: f6c271f106e18cb4a86713da688a19d0, type: 3}
+  - {fileID: 663018787038455462, guid: 5eb2af31fd9732e4e88ba2f0a205091f, type: 3}
+  - {fileID: 1792422487325838, guid: 18da3634a64acf64eb8f6eca9873d4d1, type: 3}
   networkedObjectPrefabs: []
   skillDefs:
   - {fileID: 11400000, guid: 9043c6f2e8ccfcc4f8de6281d6426f4f, type: 2}

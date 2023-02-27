@@ -9,9 +9,9 @@ namespace Daredevil.States
 {
 	public class SecondaryRanged : BaseSkillState
 	{
-		public static GameObject tracerEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerEngiTurret");
-		public static GameObject muzzleEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/MuzzleFlashes/MuzzleflashHuntress");
-		public static GameObject hitEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/HitEffect/ImpactEngiTurret");
+		public static GameObject tracerEffectPrefab = Assets.revolverTracer;
+		public static GameObject muzzleEffectPrefab = Assets.muzzleFlashRevolver;
+		public static GameObject hitEffectPrefab = Assets.revolverHit;
 		public static string abilityKey = "SecondaryRanged";
 
 		public static float damageCoefficient = 2.7f;
@@ -26,7 +26,7 @@ namespace Daredevil.States
 		private float fireTime;
 		private bool hasFired;
 		private Animator animator;
-		private string muzzleString = "MuzzleRight";
+		private string muzzleString = "MuzzleRevolver";
 		private ComboController comboCounter;
 		private WeaponController weaponController;
 
@@ -95,7 +95,7 @@ namespace Daredevil.States
 					spreadPitchScale = 0f,
 					spreadYawScale = 0f,
 					queryTriggerInteraction = QueryTriggerInteraction.UseGlobal,
-					hitEffectPrefab = FireGauss.hitEffectPrefab,
+					hitEffectPrefab = hitEffectPrefab,
 					hitCallback = delegate (BulletAttack bullet, ref BulletAttack.BulletHit hitInfo)
 					{
 						bool result = BulletAttack.defaultHitCallback(bullet, ref hitInfo);

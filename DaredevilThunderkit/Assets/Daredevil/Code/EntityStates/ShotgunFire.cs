@@ -16,8 +16,8 @@ namespace Daredevil.States
 			minSpread = 8f;
 			baseDuration = 1.5f;
 			bulletCount = 6;
-			damageCoefficient = 1.25f;
-			procCoefficient = 1f;
+			damageCoefficient = 1f;
+			procCoefficient = 0.6f;
 			recoilAmplitudeX = 3f;
 			recoilAmplitudeY = 6f;
 			spreadBloomValue = -0.3f;
@@ -25,6 +25,8 @@ namespace Daredevil.States
 			useSmartCollision = true;
 			force = 1000f;
 			tracerEffectPrefab = tracerEffect;
+			muzzleFlashPrefab = Assets.muzzleFlashShotgun;
+			muzzleName = "MuzzleBigGun";
 			maxDistance = 90f;
 
 			base.OnEnter();

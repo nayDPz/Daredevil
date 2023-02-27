@@ -2,12 +2,10 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!55 &1
 PhysicsManager:
+  m_ObjectHideFlags: 0
   serializedVersion: 13
-  m_Gravity:
-    x: 0
-    y: -30
-    z: 0
-  m_DefaultMaterial: {fileID: 5019, guid: 07899a792e1d270edb084eb9432c91e2, type: 2}
+  m_Gravity: {x: 0, y: -30, z: 0}
+  m_DefaultMaterial: {fileID: 13400000, guid: 941bc1c5870b25e4e976e6d07982d2a0, type: 2}
   m_BounceThreshold: 2
   m_SleepThreshold: 0.005
   m_DefaultContactOffset: 0.01
@@ -19,58 +17,17 @@ PhysicsManager:
   m_ClothInterCollisionDistance: 0
   m_ClothInterCollisionStiffness: 0
   m_ContactsGeneration: 1
-  m_LayerCollisionMatrix:
-  - 4274556105
-  - 4261937352
-  - 4261937352
-  - 4294967295
-  - 4261937352
-  - 4261937352
-  - 4294967295
-  - 4294967295
-  - 4261973448
-  - 4261937352
-  - 4274522569
-  - 4274677193
-  - 4278730952
-  - 4261939400
-  - 4261943496
-  - 4274520521
-  - 4261937352
-  - 4262070472
-  - 4261937352
-  - 4275044351
-  - 4261413064
-  - 4261413064
-  - 4274556105
-  - 4266167497
-  - 4261417160
-  - 4294967295
-  - 4294967295
-  - 4294967295
-  - 4294967295
-  - 4294967295
-  - 4294967295
-  - 4294967295
+  m_LayerCollisionMatrix: c98cc8fec80008fec80008feffffffffc80008fec80008feffffffffffffffffc88d08fec80008fec909c8fec965cafec84008ffc80808fec81808fec901c8fec80008fec8080afec80008feffffcffec80000fec80000fec98cc8fec98c48fec81000feffffffffffffffffffffffffffffffffffffffffffffffffffffffff
   m_AutoSimulation: 1
   m_AutoSyncTransforms: 0
-  m_ReuseCollisionCallbacks: 1
-  m_ClothInterCollisionSettingsToggle: 0
-  m_ClothGravity:
-    x: 0
-    y: -9.81
-    z: 0
+  m_ReuseCollisionCallbacks: 0
+  m_ClothInterCollisionSettingsToggle: 1
+  m_ClothGravity: {x: 0, y: -9.81, z: 0}
   m_ContactPairsMode: 0
   m_BroadphaseType: 0
   m_WorldBounds:
-    m_Center:
-      x: 0
-      y: 0
-      z: 0
-    m_Extent:
-      x: 250
-      y: 250
-      z: 250
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 250, y: 250, z: 250}
   m_WorldSubdivisions: 8
   m_FrictionType: 0
   m_EnableEnhancedDeterminism: 0

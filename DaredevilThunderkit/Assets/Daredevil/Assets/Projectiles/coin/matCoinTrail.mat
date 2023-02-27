@@ -8,20 +8,26 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: matCoinTrail
-  m_Shader: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: CLOUDOFFSET USE_CLOUDS VERTEXOFFSET _ALPHATEST_ON _EMISSION
+  m_Shader: {fileID: 4800000, guid: b54fef43eb3725048aa56c47d3140c4a, type: 3}
+  m_ShaderKeywords: CLOUDOFFSET FADECLOSE USE_CLOUDS VERTEXOFFSET _ALPHATEST_ON _EMISSION
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
-  stringTagMap:
-    RenderType: TransparentCutout
-  disabledShaderPasses:
-  - ALWAYS
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Cloud1Tex:
+        m_Texture: {fileID: 2800000, guid: 47864d4a654e426438f4883e7e8440f2, type: 3}
+        m_Scale: {x: 0.66, y: 0.4}
+        m_Offset: {x: 0, y: 0}
+    - _Cloud2Tex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -33,11 +39,15 @@ Material:
         m_Texture: {fileID: 2800000, guid: 1763e2075384b1649afa8829db38c2f3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _RemapTex:
+        m_Texture: {fileID: 2800000, guid: 42402596dbabbf6468e260e16f127e38, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AlphaBias: 0.627
-    - _AlphaBoost: 1.23
+    - _AlphaBias: 0.024
+    - _AlphaBoost: 0.79
     - _BlendOp: 0
-    - _Boost: 3.4
+    - _Boost: 9.93
     - _BumpScale: 1
     - _CalcTextureAlphaOn: 0
     - _CameraFadingEnabled: 0
@@ -53,14 +63,14 @@ Material:
     - _DisableRemapOn: 0
     - _DistortionBlend: 0.5
     - _DistortionEnabled: 0
-    - _DistortionStrength: 0.69
+    - _DistortionStrength: 0.13
     - _DistortionStrengthScaled: 0
-    - _DstBlend: 0
+    - _DstBlend: 1
     - _EmissionEnabled: 1
     - _ExternalAlpha: 1
     - _Fade: 1
     - _FadeCloseDistance: 0.5
-    - _FadeCloseOn: 0
+    - _FadeCloseOn: 1
     - _FlipbookMode: 0
     - _FresnelOn: 0
     - _FresnelPower: 0
@@ -68,7 +78,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _InternalSimpleBlendMode: 0
-    - _InvFade: 0.1
+    - _InvFade: 0
     - _LightingEnabled: 0
     - _Metallic: 0
     - _Mode: 1
@@ -94,7 +104,7 @@ Material:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 0.990566, g: 0.83527476, b: 0.4625756, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
-    - _CutoffScroll: {r: 90.07, g: 1, b: 1, a: 0}
+    - _CutoffScroll: {r: 50, g: 5.1, b: 450.64, a: 0}
     - _EmissionColor: {r: 1, g: 0.6498705, b: 0.2028302, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
-    - _TintColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TintColor: {r: 1, g: 0.7460445, b: 0.023584902, a: 1}

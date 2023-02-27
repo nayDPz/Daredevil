@@ -11,6 +11,9 @@ namespace Daredevil
 		public static string quickShotLeft = "QuickShotLeft";
 		public static string quickShotRight = "QuickShotRight";
 
+		public static string jetpackChargeUp = "Play_daredevil_jetpack_hit";
+		public static string jetpackBurst = "Play_daredevil_jetpack_shoot";
+
 		public static string blink = "Play_huntress_shift_start";
 		public static string blinkEnd = "Play_huntress_shift_end";
 

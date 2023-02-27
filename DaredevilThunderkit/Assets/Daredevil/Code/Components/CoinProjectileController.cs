@@ -19,17 +19,14 @@ namespace Daredevil.Components
 
 		public static float baseRicochetMultiplier = 2f;
 		public bool canRicochet = true;
-		private float graceTimer = 0.75f;
+		private float graceTimer = 0.4f;
 		public float ricochetMultiplier = 2f;
 		private Vector3 rotationSpeed = new Vector3(2000f, 0f, 0f);
 		public static Action<CoinProjectileController> onCoinAwakeGlobal;
 
 		public void OnIncomingDamageServer(DamageInfo damageInfo)
 		{
-			if (damageInfo.attacker != this.controller.owner)
-			{
-				damageInfo.rejected = true;
-			}
+			damageInfo.rejected = true;
 		}
 
 		private void Start()
@@ -71,12 +68,14 @@ namespace Daredevil.Components
 			{
 				this.canRicochet = false;
 				TeamComponent teamComponent = damageInfo.attacker.GetComponent<TeamComponent>();
+				float co = damageInfo.damage / teamComponent.body.damage;
 				CoinRicochetOrb orb = new CoinRicochetOrb
-				{
+				{				
 					coinPosition = base.transform.position,
 					origin = base.transform.position,
 					speed = 180f,
 					attacker = damageInfo.attacker,
+					damageCoefficient = co,
 					damageValue = damageInfo.damage * this.ricochetMultiplier,
 					damageType = DamageType.Generic,
 					teamIndex = teamComponent.teamIndex,
@@ -85,6 +84,13 @@ namespace Daredevil.Components
 				};
 				OrbManager.instance.AddOrb(orb);
 				EffectManager.SimpleSoundEffect(this.ricochetSound.index, base.transform.position, true);
+
+				if (DamageNumberManager.instance)
+					DamageNumberManager.instance.SpawnDamageNumber(damageInfo.damage, damageInfo.position, damageInfo.crit,
+						teamComponent.teamIndex, DamageColorIndex.Item);
+
+
+
 				Destroy(base.gameObject);
 			}
 		}
@@ -149,7 +155,7 @@ namespace Daredevil.Components
 				bulletAttack.muzzleName = "";
 				bulletAttack.minSpread = 0f;
 				bulletAttack.maxSpread = 0f;
-				bulletAttack.hitEffectPrefab = null;
+				bulletAttack.hitEffectPrefab = null; /////////////////
 				bulletAttack.smartCollision = true;
 				bulletAttack.sniper = false;
 				bulletAttack.spreadPitchScale = 1f;
@@ -196,7 +202,8 @@ namespace Daredevil.Components
 				Vector3 coinVelocity = new Vector3(hVelocity.x, y, hVelocity.z);
 				float magnitude = coinVelocity.magnitude;
 				Vector3 normalized = coinVelocity.normalized;
-				Log.LogInfo("Spawned coin at " + origin + ", direction " + normalized + ", at speed " + magnitude);
+
+				//Log.LogInfo("Spawned coin at " + origin + ", direction " + normalized + ", at speed " + magnitude);
 
 				onCoinAwakeGlobal += (coin) => ModifyCoinOnSpawn(coin, damageMultiplier);
 				ProjectileManager.instance.FireProjectile(Assets.coinProjectile, origin, Util.QuaternionSafeLookRotation(normalized),

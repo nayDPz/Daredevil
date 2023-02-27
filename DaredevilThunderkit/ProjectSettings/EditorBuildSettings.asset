@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/RoR2/Base/Scenes/loadingbasic/loadingbasic.unity
+    guid: 8e72ad29ce3408744906bda9592e9029
   m_configObjects: {}

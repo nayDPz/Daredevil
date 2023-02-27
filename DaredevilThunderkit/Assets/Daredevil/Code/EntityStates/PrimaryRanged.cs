@@ -9,9 +9,9 @@ namespace Daredevil.States
 	public class PrimaryRanged : BaseSkillState
 	{
 
-		public GameObject tracerEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerCaptainShotgun");
-		public GameObject muzzleEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/MuzzleFlashes/MuzzleflashHuntress");
-		public GameObject hitEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/HitEffect/HitsparkCaptainShotgun");
+		public GameObject tracerEffectPrefab = Assets.pistolTracer;
+		public GameObject muzzleEffectPrefab = Assets.muzzleFlashPistol;
+		public GameObject hitEffectPrefab = Assets.pistolHit;
 		public static string abilityKey = "PrimaryRanged";
 
 		public static float damageCoefficient = 1.8f;
@@ -28,7 +28,7 @@ namespace Daredevil.States
 		private float fireTime;
 		private bool hasFired;
 		private Animator animator;
-		private string muzzleString = "MuzzleLeft";
+		private string muzzleString = "MuzzlePistol";
 
 		public override void OnEnter()
 		{
@@ -67,7 +67,7 @@ namespace Daredevil.States
 
 			this.hasFired = true;
 			base.characterBody.AddSpreadBloom(1.5f);
-			EffectManager.SimpleMuzzleFlash(muzzleEffectPrefab, base.gameObject, this.muzzleString, false);
+			EffectManager.SimpleMuzzleFlash(muzzleEffectPrefab, base.gameObject, this.muzzleString, true);
 			Util.PlaySound("ShotPrimary", base.gameObject);
 			if (base.isAuthority)
 			{
@@ -101,7 +101,7 @@ namespace Daredevil.States
 					spreadPitchScale = 0f,
 					spreadYawScale = 0f,
 					queryTriggerInteraction = QueryTriggerInteraction.UseGlobal,
-					hitEffectPrefab = muzzleEffectPrefab,
+					hitEffectPrefab = hitEffectPrefab,
 					hitCallback = delegate (BulletAttack bullet, ref BulletAttack.BulletHit hitInfo)
 					{
 						bool result = BulletAttack.defaultHitCallback(bullet, ref hitInfo);

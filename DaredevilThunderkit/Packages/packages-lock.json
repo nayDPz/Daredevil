@@ -168,6 +168,12 @@
       "dependencies": {},
       "hash": "9acf13ca9731e1fea43d89b88c6bc054eb6cf32c"
     },
+    "rune580-risk_of_options": {
+      "version": "file:Risk_Of_Options",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,

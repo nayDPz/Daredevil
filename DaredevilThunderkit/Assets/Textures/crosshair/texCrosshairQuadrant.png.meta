@@ -1,0 +1,155 @@
+fileFormatVersion: 2
+guid: 6c5eac0e50b0ac7418e7608ca6f70a14
+timeCreated: 1650732052
+licenseType: Free
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: texCrosshairQuadrant
+  externalObjects: {}
+  usedFileIDs: []
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 12
+  maxTextureSize: 512
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 16
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 0
+  spriteMeshType: 1
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 150
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: texCrosshairQuadrant
+      rect:
+        serializedVersion: 2
+        x: 166.07613
+        y: 409.0761
+        width: 179.88097
+        height: 43.84778
+      alignment: 9
+      pivot: {x: 0.49990767, y: -3.4910803}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -87.01661, y: -22}
+        - {x: -90.01661, y: -18}
+        - {x: -90.01661, y: 1.9999847}
+        - {x: -55.01661, y: 22.000015}
+        - {x: 57.98339, y: 22.000015}
+        - {x: 89.98339, y: 1}
+        - {x: 89.98339, y: -18}
+        - {x: 76.98339, y: -22}
+      physicsShape:
+      - - {x: 26.983393, y: 1.5258789E-05}
+        - {x: 49.98339, y: -5}
+        - {x: 70.98339, y: -14}
+        - {x: 73.98339, y: -14}
+        - {x: 81.98339, y: -11}
+        - {x: 81.98339, y: -6}
+        - {x: 79.9834, y: -2}
+        - {x: 45.98339, y: 10}
+        - {x: 23.98339, y: 14}
+        - {x: -18.01661, y: 14}
+        - {x: -36.01661, y: 11}
+        - {x: -57.01661, y: 7}
+        - {x: -75.01661, y: 1.5258789E-05}
+        - {x: -82.01661, y: -5}
+        - {x: -82.01661, y: -8}
+        - {x: -76.01661, y: -14}
+        - {x: -73.01661, y: -14}
+        - {x: -63.016613, y: -10}
+        - {x: -37.01661, y: -2}
+        - {x: -4.016609, y: 1.0000153}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c61287f737d455ca881f72aef0e06bc
+      internalID: 21300000
+      vertices:
+      - {x: 346, y: 432}
+      - {x: 333, y: 409}
+      - {x: 346, y: 413}
+      - {x: 314, y: 453}
+      - {x: 201, y: 453}
+      - {x: 169, y: 409}
+      - {x: 166, y: 433}
+      - {x: 166, y: 413}
+      indices: 070000000600000005000000040000000500000006000000010000000500000004000000030000000100000004000000000000000100000003000000020000000100000000000000
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID:
+    internalID: 0
+    vertices: []
+    indices:
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag:
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData:
+  assetBundleName:
+  assetBundleVariant:

@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 4745881747772490339}
   - component: {fileID: 2455799593758384423}
   - component: {fileID: 6870052208831555385}
-  - component: {fileID: 4457375655542353766}
+  - component: {fileID: 2411594747826246352}
   m_Layer: 0
   m_Name: DaredevilBody
   m_TagString: Player
@@ -159,7 +159,7 @@ Transform:
   - {fileID: 5020410190472427370}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 180, y: 86.559006, z: 180}
+  m_LocalEulerAnglesHint: {x: 180, y: 180, z: 180}
 --- !u!114 &8334124754514843231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,8 +206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyIndex: -1
-  baseNameToken: DAREDEVIL_DAREDEVIL_BODY_NAME
-  subtitleNameToken: DAREDEVIL_DAREDEVIL_BODY_SUBTITLE
+  baseNameToken: ORB_DAREDEVIL_BODY_NAME
+  subtitleNameToken: ORB_DAREDEVIL_BODY_SUBTITLE
   bodyFlags: 16
   rootMotionInMainState: 0
   mainRootSpeed: 0
@@ -265,7 +265,7 @@ MonoBehaviour:
   aimOriginTransform: {fileID: 5020410190472427370}
   hullClassification: 0
   portraitIcon: {fileID: 2800000, guid: 9b21173d10a7b6b4b9e2a0555e9ac7be, type: 3}
-  bodyColor: {r: 1, g: 1, b: 1, a: 0}
+  bodyColor: {r: 0.8396226, g: 0, b: 0, a: 1}
   isChampion: 0
   currentVehicle: {fileID: 0}
   preferredPodPrefab: {fileID: 0}
@@ -883,7 +883,7 @@ MonoBehaviour:
   maxTrackingDistance: 60
   maxTrackingAngle: 70
   trackerUpdateFrequency: 10
-  trackingTarget: {fileID: 0}
+  maxTargets: 4
   characterBody: {fileID: 2301956560915940638}
   teamComponent: {fileID: 5162388520638182168}
   inputBank: {fileID: 1660784439705420524}
@@ -891,7 +891,9 @@ MonoBehaviour:
   weaponController: {fileID: 2455799593758384423}
   stunSkill: {fileID: 1134554339319138690}
   skillSlotToOverride: 1
---- !u!114 &4457375655542353766
+  indicatorPrefab: {fileID: 8187371131818370145, guid: f6027e70fc3edf146bf5e96f72217639,
+    type: 3}
+--- !u!114 &2411594747826246352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -904,6 +906,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeRange: 8
+  characterBody: {fileID: 2301956560915940638}
+  indicatorPrefab: {fileID: 1174858383958104374, guid: 208327252503a0d4bb3d78577f296d2e,
+    type: 3}
+  trackerUpdateFrequency: 10
 --- !u!1001 &735489808067717502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -936,6 +942,16 @@ PrefabInstance:
       propertyPath: body
       value: 
       objectReference: {fileID: 2301956560915940638}
+    - target: {fileID: 5992635290424169003, guid: ef9dd8c1a3e5d324481b52a40b4820fb,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5.6509676
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992635290424169003, guid: ef9dd8c1a3e5d324481b52a40b4820fb,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 7.0988398
+      objectReference: {fileID: 0}
     - target: {fileID: 6498550797125696923, guid: ef9dd8c1a3e5d324481b52a40b4820fb,
         type: 3}
       propertyPath: m_RootOrder

@@ -1,76 +1,133 @@
 using RoR2;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Daredevil.Components
 {
 	public class MeleeTracker : MonoBehaviour
 	{
+		private float rayRadius = 1f;
 		public float meleeRange = 8f;
-		private CharacterBody characterBody;
+		public CharacterBody characterBody;
+		public GameObject indicatorPrefab;
+
 		private InputBankTest inputBank;
+		private Dictionary<HealthComponent, GameObject> indicators;
+
+		private SphereSearch search = new SphereSearch();
+
+		public float trackerUpdateFrequency = 10f;
+		private float trackerUpdateStopwatch;
+		private List<HurtBox> targetList = new List<HurtBox>();
+
 		private void Start()
 		{
 			this.characterBody = GetComponent<CharacterBody>();
 			this.inputBank = GetComponent<InputBankTest>();
+			this.indicators = new Dictionary<HealthComponent, GameObject>();
+		}
+		private void FixedUpdate()
+        {
+			if (!Util.HasEffectiveAuthority(this.characterBody.gameObject))
+				return;
+
+			this.trackerUpdateStopwatch += Time.fixedDeltaTime;
+			if (this.trackerUpdateStopwatch >= 1f / this.trackerUpdateFrequency)
+			{
+				this.trackerUpdateStopwatch -= 1f / this.trackerUpdateFrequency;
+
+				List<HurtBox> oldHurtBoxes = this.targetList;
+				this.targetList = Search();
+
+				CleanTargets(oldHurtBoxes);
+			}
+		}
+
+		private void CleanTargets(List<HurtBox> oldList)
+        {
+			for (int i = oldList.Count - 1; i >= 0; i--)
+			{
+				HurtBox hurtBox = oldList[i];
+				if (!hurtBox.healthComponent || !hurtBox.healthComponent.alive || !this.targetList.Contains(oldList[i]))
+				{
+					HurtBox gone = oldList[i];
+					if (this.indicators.TryGetValue(gone.healthComponent, out GameObject indicator))
+					{
+						GameObject.Destroy(indicator.gameObject);
+						this.indicators.Remove(gone.healthComponent);
+					}
+				}
+			}
+		}
+		private List<HurtBox> Search()
+        {
+			TeamMask mask = TeamMask.GetUnprotectedTeams(this.characterBody.teamComponent.teamIndex);
+
+			this.search.origin = this.characterBody.corePosition;
+			this.search.radius = this.meleeRange;
+			this.search.mask = LayerIndex.entityPrecise.mask;
+			this.search.queryTriggerInteraction = QueryTriggerInteraction.Ignore;
+			List<HurtBox> hurtBoxes = this.search.RefreshCandidates().FilterCandidatesByHurtBoxTeam(mask)
+				.FilterCandidatesByDistinctHurtBoxEntities().GetHurtBoxes().ToList();
+
+			foreach (HurtBox hurtBox in hurtBoxes)
+			{
+				AddIndicator(hurtBox.hurtBoxGroup.mainHurtBox);
+			}
+
+			return hurtBoxes.Select<HurtBox, HurtBox>(hb => hb.hurtBoxGroup.mainHurtBox).ToList();
+
+		}
+
+		private void AddIndicator(HurtBox hurtBox)
+		{
+			GameObject indicator;
+			if (!this.indicators.TryGetValue(hurtBox.healthComponent, out indicator))
+			{
+				indicator = GameObject.Instantiate(this.indicatorPrefab);
+				indicators.Add(hurtBox.healthComponent, indicator);
+
+				foreach (ParticleSystem p in indicator.GetComponentsInChildren<ParticleSystem>())
+				{
+					float scale = p.startSize * hurtBox.healthComponent.body.bestFitRadius * 0.35f;
+					p.startSize = scale;
+				}
+			}							
+			indicator.transform.parent = hurtBox.transform;
+			indicator.transform.localPosition = Vector3.zero;
 		}
 
 		public bool HasTarget()
 		{
-			Vector3 baseDirection = this.inputBank.aimDirection;
-			Vector3 origin = this.inputBank.aimOrigin;
-			Vector3 direction = baseDirection;
+			bool hit = Util.CharacterSpherecast(this.characterBody.gameObject, this.inputBank.GetAimRay(), this.rayRadius, out RaycastHit hitInfo,
+				this.meleeRange - this.rayRadius, LayerIndex.entityPrecise.mask, QueryTriggerInteraction.UseGlobal);
+			hit |= TestRaycastHit(hitInfo);
 
-			if (TestRaycastHit(Physics.RaycastAll(origin, direction, meleeRange)))
-				return true;
-
-			direction = baseDirection + Vector3.up * 0.5f;
-			if (TestRaycastHit(Physics.RaycastAll(origin, direction, meleeRange)))
-				return true;
-
-			direction = baseDirection + Vector3.down * 0.5f;
-			if (TestRaycastHit(Physics.RaycastAll(origin, direction, meleeRange)))
-				return true;
-
-			direction = baseDirection + Vector3.left * 0.5f;
-			if (TestRaycastHit(Physics.RaycastAll(origin, direction, meleeRange)))
-				return true;
-
-			direction = baseDirection + Vector3.right * 0.5f;
-			if (TestRaycastHit(Physics.RaycastAll(origin, direction, meleeRange)))
-				return true;
-
-			direction = baseDirection + Vector3.forward * 0.5f;
-			if (TestRaycastHit(Physics.RaycastAll(origin, direction, meleeRange)))
-				return true;
-
-			direction = baseDirection + Vector3.back * 0.5f;
-			if (TestRaycastHit(Physics.RaycastAll(origin, direction, meleeRange)))
-				return true;
-
-			return false;
+			return hit;
 		}
 
-		public bool TestRaycastHit(RaycastHit[] hits)
+		public bool TestRaycastHit(RaycastHit raycastHit)
 		{
-			foreach (RaycastHit raycastHit in hits)
+			Collider collider = raycastHit.collider;
+			if (collider)
 			{
-				Collider collider = raycastHit.collider;
-				if (collider)
+				HurtBox hurtBox = collider.GetComponent<HurtBox>();
+				if (hurtBox)
 				{
-					HurtBox hurtBox = collider.GetComponent<HurtBox>();
-					if (hurtBox)
+					HealthComponent healthComponent = hurtBox.healthComponent;
+					if (healthComponent && healthComponent.alive 
+						&& healthComponent.body.teamComponent.teamIndex != this.characterBody.teamComponent.teamIndex)
 					{
-						HealthComponent healthComponent = hurtBox.healthComponent;
-						if (healthComponent && healthComponent.gameObject != this.characterBody.gameObject && healthComponent.alive)
-						{
-							return true;
-						}
+						return true;
 					}
 				}
-
 			}
+
+			
 			return false;
 		}
+
 	}
 }
 

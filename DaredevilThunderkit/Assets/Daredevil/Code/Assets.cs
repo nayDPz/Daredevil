@@ -49,6 +49,7 @@ namespace Daredevil
 		internal static GameObject pistolHit;
 		internal static GameObject revolverHit;
 
+		internal static GameObject stunIndicator;
 
 		internal static GameObject gunImpactEffect;
 

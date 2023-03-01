@@ -19,7 +19,7 @@
     "ORB_DAREDEVIL_SECONDARY_LOCKON_DESCRIPTION": "Fire repeatedly at stunned targets, dealing <style=cIsDamage>120% damage</style>. The number of shots increases with attack speed.",
 	
     "ORB_DAREDEVIL_SECONDARY_COIN_NAME": "Coin",
-    "ORB_DAREDEVIL_SECONDARY_COIN_DESCRIPTION": "<style=cIsDamage>Stunning.</style> Fire a <style=cIsDamage>coin</style> at an enemy. Shooting the coin deals <style=cIsDamage>200% TOTAL damage</style> to a nearby target.",
+    "ORB_DAREDEVIL_SECONDARY_COIN_DESCRIPTION": "<style=cIsDamage>Stunning.</style> Fire a <style=cIsDamage>coin</style> at an enemy. Shooting the coin deals <style=cIsDamage>200% TOTAL damage</style> to a nearby target. Against <style=cIsDamage>stunned</style> targets, instead use <style=cIsDamage>Wild Rush</style>",
 
     "ORB_DAREDEVIL_UTILITY_DASH_NAME": "Twin Boosters",
     "ORB_DAREDEVIL_UTILITY_DASH_DESCRIPTION": "<style=cIsDamage>Stunning.</style> <style=cIsUtility>Dash</style> a short distance and vault off of a target, dealing <style=cIsDamage>600% damage</style> in an area.",
@@ -28,7 +28,7 @@
     "ORB_DAREDEVIL_SPECIAL_DESCRIPTION": "<color=#Cc8049>Combo-6</color>. Blink to an area, then fire rapidly at nearby enemies for <style=cIsDamage>6x250% damage</style>.",
 
     "ORB_DAREDEVIL_SPECIAL_WEAPON_NAME": "Deadly Arsenal",
-    "ORB_DAREDEVIL_SPECIAL_WEAPON_DESCRIPTION": "<color=#Cc8049>Combo-6</color>. Equip a <style=cIsDamage>random, powerful weapon.</style> for 8 seconds.",
+    "ORB_DAREDEVIL_SPECIAL_WEAPON_DESCRIPTION": "<color=#Cc8049>Combo-6</color>. Equip a <style=cIsDamage>random, powerful weapon</style> for 8 seconds.",
 
   }
 }

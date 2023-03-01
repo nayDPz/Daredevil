@@ -4,11 +4,18 @@ using UnityEngine;
 
 namespace Daredevil.Components
 {
-	public class ProjectileExplodeOnShot : MonoBehaviour, IShootable
+	public class ProjectileExplodeOnShot : MonoBehaviour, IShootable, IOnIncomingDamageServerReceiver
 	{
 		public ProjectileImpactExplosion projectileImpactExplosion;
 		public RicochetUtils.RicochetPriority priority = RicochetUtils.RicochetPriority.Explosive;
 		public GameObject bigExplosionPrefab;
+
+
+		// fuuuuucking lol
+		public void OnIncomingDamageServer(DamageInfo damageInfo)
+		{
+			damageInfo.rejected = true;
+		}
 
 		private void Awake()
 		{
@@ -46,7 +53,9 @@ namespace Daredevil.Components
 				this.projectileImpactExplosion.SetAlive(false);
 			}
 		}
-	}
+
+        
+    }
 
 }
 

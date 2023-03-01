@@ -15,7 +15,7 @@ namespace Daredevil.States
 		public static int maxTargets = 4;
 		public static float damageCoefficient = 1.2f;
 		public static float procCoefficient = 0.5f;
-		public static float maxBaseDuration = 2.1f;
+		public static float maxBaseDuration = 1.25f;
 		public static float baseDuration = 0.6f;
 		public static float recoil = 3f;
 
@@ -105,7 +105,7 @@ namespace Daredevil.States
 			this.shotsPerTarget *= this.attackSpeedStat;
 			this.totalShots = this.shotsPerTarget * this.targetList.Count;
 
-			this.shootDuration = Mathf.Lerp(baseDuration, maxBaseDuration, (targetCount - 1) / (maxTargets - 1));
+			this.shootDuration = Mathf.Lerp(baseDuration, maxBaseDuration, (this.targetList.Count - 1) / (maxTargets - 1) );
 			this.fireInterval = this.shootDuration / this.totalShots;
 			this.animator = GetModelAnimator();
 
@@ -180,13 +180,13 @@ namespace Daredevil.States
 
 			bool left = shotsFired % 2f == 1f;
 			string s = left ? "Left" : "Right";
-			Util.PlaySound("QuickShot" + s, base.gameObject);
-			
+
+			Util.PlaySound("QuickShot" + s, base.gameObject);			
             base.PlayAnimation("Gesture, Additive", "QuickShot" + s);
 
 			string muzzleName = left ? "MuzzlePistol" : "MuzzleRevolver";
 			GameObject mf = (shotsFired % 2f == 1f) ? Assets.muzzleFlashPistol : Assets.muzzleFlashRevolver;
-			EffectManager.SimpleMuzzleFlash(mf, base.gameObject, muzzleName, true);
+			EffectManager.SimpleMuzzleFlash(mf, base.gameObject, muzzleName, false);
 
 			if (base.isAuthority)
 			{

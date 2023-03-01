@@ -64,26 +64,31 @@ namespace Daredevil.States
 				overlapAttack.isCrit = RollCrit();
 				DamageAPI.AddModdedDamageType(overlapAttack, DaredevilMain.applyStunMark);
 				ComboController comboController = GetComponent<ComboController>();
-				this.hitCoins = new List<CoinProjectileController>();
-				if (overlapAttack.Fire())
-				{
-					if (comboController)
-					{
-						comboController.AddCombo(1, "JetpackVault");
-					}
-					this.hitCoins = CoinProjectileController.CoinMethods.OverlapAttackGetCoins(overlapAttack);
-				}
-				if (this.hitCoinObjects != null)
-				{
-					this.hitCoins = this.hitCoins.Concat(from g in hitCoinObjects
-														 where g.GetComponent<CoinProjectileController>()
-														 select g.GetComponent<CoinProjectileController>()).ToList();
-				}
-				if (this.hitCoins.Count > 0)
-				{
-					FireCoins(direction);
-				}
-			}
+
+
+
+                // MAYBE SOME OTHER TIMEEEEEE
+
+                //this.hitCoins = new List<CoinProjectileController>();
+                if (overlapAttack.Fire())
+                {
+                    if (comboController)
+                    {
+                        comboController.AddCombo(1, "JetpackVault");
+                    }
+                    this.hitCoins = CoinProjectileController.CoinMethods.OverlapAttackGetCoins(overlapAttack);
+                }
+                //if (this.hitCoinObjects != null)
+                //{
+                //	this.hitCoins = this.hitCoins.Concat(from g in hitCoinObjects
+                //										 where g.GetComponent<CoinProjectileController>()
+                //										 select g.GetComponent<CoinProjectileController>()).ToList();
+                //}
+                //if (this.hitCoins.Count > 0)
+                //{
+                //	FireCoins(direction);
+                //}
+            }
 
 		}
 

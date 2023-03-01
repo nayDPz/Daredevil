@@ -97,10 +97,12 @@ namespace Daredevil.States
 
 		private void FireBullets()
 		{
+			PlayCrossfade("Gesture, Override", "FireSmall", "fireSmall.playbackRate", baseMaxFireInterval, 0.025f);
+			EffectManager.SimpleMuzzleFlash(muzzlePrefab, base.gameObject, "MuzzleBigGun", false);
+
 			if (base.isAuthority)
 			{
-				PlayCrossfade("Gesture, Override", "FireSmall", "fireSmall.playbackRate", baseMaxFireInterval, 0.025f);
-				EffectManager.SimpleMuzzleFlash(muzzlePrefab, base.gameObject, "MuzzleBigGun", true);
+				
 
 				UpdateCrits();
 

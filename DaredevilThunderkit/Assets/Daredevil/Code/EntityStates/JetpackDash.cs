@@ -125,6 +125,8 @@ namespace Daredevil.States
 
 		}
 
+
+		// NETWORK THIS////////////////////////////////////////////////////////////
 		protected virtual void OnHitEnemyAuthority()
 		{
 			this.hitCoinObjects = CoinProjectileController.CoinMethods.OverlapAttackGetCoins(detector).Select(coin => coin.gameObject).ToList();
@@ -136,6 +138,8 @@ namespace Daredevil.States
 				this.hitPauseTimer = this.hitPauseDuration / moveSpeedMultiplier;
 				this.hasHit = true;
 
+
+				
 				Util.PlayAttackSpeedSound(Sounds.jetpackChargeUp, base.gameObject, moveSpeedMultiplier);
 				GameObject charge = GameObject.Instantiate<GameObject>(Assets.jetpackChargeEffect, base.characterBody.coreTransform);
 				charge.GetComponent<ScaleParticleSystemDuration>().newDuration = this.hitPauseTimer;

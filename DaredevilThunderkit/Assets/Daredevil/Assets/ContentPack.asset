@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPrefabs:
   - {fileID: 8383480517167273634, guid: 69c5b91720531414f9c1c800d473e037, type: 3}
+  - {fileID: 5992027840579068768, guid: 4707bcf17d2a00c4f953f0c03e72e8cf, type: 3}
+  - {fileID: 1193141527753475696, guid: 23e5161b311c3c94ab415cd30fbcfa7f, type: 3}
+  - {fileID: 7777211188073527283, guid: 238ad19f5b427944fbbcaa4e092bf2cd, type: 3}
   masterPrefabs: []
   projectilePrefabs:
   - {fileID: 1193141527753475696, guid: 23e5161b311c3c94ab415cd30fbcfa7f, type: 3}

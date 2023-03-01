@@ -18,6 +18,7 @@ using UnityEngine.Networking;
 using RiskOfOptions;
 
 using ModdedDamageType = R2API.DamageAPI.ModdedDamageType;
+using System.Runtime.CompilerServices;
 
 namespace Daredevil
 {
@@ -54,7 +55,7 @@ namespace Daredevil
 		public static PluginInfo PInfo { get; private set; }
 
 
-		internal static bool optionsInstalled;
+		internal static bool RiskOfOptionsInstalled;
 		internal static float comboVolume = 100f;
 		public static AudioManager.VolumeConVar cvComboVolume = new AudioManager.VolumeConVar("volume_combo", 
 			ConVarFlags.Archive | ConVarFlags.Engine, "100", 
@@ -69,9 +70,11 @@ namespace Daredevil
 			Languages.Init();
 			Daredevil.Config.ReadConfig();
 
-			if (optionsInstalled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions"))
-				ModSettingsManager.AddOption(new RiskOfOptions.Options.SliderOption(Daredevil.Config.comboVolume));
-
+			if (RiskOfOptionsInstalled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions"))
+            {
+				SetupOptions();
+			}
+				
 			Daredevil.Config.comboVolume.SettingChanged += (object sender, EventArgs args) => { cvComboVolume.AttemptSetString(Daredevil.Config.comboVolume.Value.ToString()); };
 
 			Assets.PopulateAssets();
@@ -93,6 +96,12 @@ namespace Daredevil
 
 			ContentManager.onContentPacksAssigned += LateSetup;
 		}
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		private void SetupOptions()
+        {			
+			ModSettingsManager.AddOption(new RiskOfOptions.Options.SliderOption(Daredevil.Config.comboVolume));
+        }
 
 		public void Start()
 		{
@@ -139,6 +148,7 @@ namespace Daredevil
 
 		}
 
+		//item displays
 		private void LateSetup(ReadOnlyArray<ReadOnlyContentPack> obj)
 		{
 		}
@@ -178,7 +188,6 @@ namespace Daredevil
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.UI.HUD.Awake += HUD_Awake;
             On.EntityStates.StunState.OnEnter += StunState_OnEnter;
-            On.RoR2.CharacterBody.Update += CharacterBody_Update;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
 		}
 
@@ -186,7 +195,14 @@ namespace Daredevil
 		{
 			orig(self);
 			if(NetworkServer.active)
-				self.characterBody.AddTimedBuff(DaredevilContent.Buffs.stunMarked, 2f);
+            {
+				//ULTRA MEGA SCUFFEDDDDDDDDDDDDDDDDDD
+				// NEED TO ADD INDICATORS ASAP
+				foreach(TeamComponent t in TeamComponent.GetTeamMembers(TeamIndex.Player))
+					if(t.body.bodyIndex == bodyIndex)
+						self.characterBody.AddTimedBuff(DaredevilContent.Buffs.stunMarked, 2f);
+			}
+				
 		}
 
 		private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
@@ -256,70 +272,6 @@ namespace Daredevil
 			}
 						
 			orig(self, damageInfo);
-		}
-
-		private void CharacterBody_Update(On.RoR2.CharacterBody.orig_Update orig, CharacterBody self)
-		{
-			orig(self);
-
-			CharacterModel GetCharacterModelFromCharacterBody(CharacterBody body)
-			{
-				var modelLocator = body.modelLocator;
-				if (modelLocator)
-				{
-					var modelTransform = body.modelLocator.modelTransform;
-					if (modelTransform)
-					{
-						var model = modelTransform.GetComponent<CharacterModel>();
-						if (model)
-						{
-							return model;
-						}
-					}
-
-				}
-				return null;
-			}
-
-			if (self && self.inventory)
-			{
-				CharacterModel model = GetCharacterModelFromCharacterBody(self);
-
-				if (!self.gameObject.GetComponent<DestroyEffectOnBuffEnd>())
-				{
-					if (self.HasBuff(DaredevilContent.Buffs.stunMarked) && !self.HasBuff(DaredevilContent.Buffs.stunMarkedCooldown) && model)
-					{
-						var tracker = self.gameObject.AddComponent<DestroyEffectOnBuffEnd>();
-
-						tracker.body = self;
-						tracker.buff = DaredevilContent.Buffs.stunMarked;
-
-						TemporaryOverlay overlay = model.gameObject.AddComponent<TemporaryOverlay>();
-						overlay.duration = float.PositiveInfinity;
-						overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
-						overlay.animateShaderAlpha = true;
-						overlay.destroyComponentOnEnd = true;
-						overlay.originalMaterial = Resources.Load<Material>("Materials/matFullCrit"); ; /////////////
-						overlay.AddToCharacerModel(model);
-						tracker.effect = overlay;
-					}
-				}
-
-			}
-		}
-		public class DestroyEffectOnBuffEnd : MonoBehaviour
-		{
-			public BuffDef buff;
-			public CharacterBody body;
-			public TemporaryOverlay effect;
-			public void Update()
-			{
-				if (!body || !body.HasBuff(buff) || body.HasBuff(DaredevilContent.Buffs.stunMarkedCooldown) || !body.healthComponent.alive)
-				{
-					Destroy(effect);
-					Destroy(this);
-				}
-			}
 		}
 
 
